@@ -18,10 +18,11 @@ class HomeModule extends Module {
     Bind.lazySingleton((i) => ShoplistRepository()),
     Bind.lazySingleton((i) => ProductRepository()),
     Bind.lazySingleton((i) => MarketplaceRepository()),
-    Bind.lazySingleton((i) => PurchaseService()),
-    Bind.lazySingleton((i) => ShoplistService()),
-    Bind.lazySingleton((i) => ProductService()),
-    Bind.lazySingleton((i) => MarketplaceService()),
+    Bind.lazySingleton((i) => PurchaseService(purchaseRepository: i.get())),
+    Bind.lazySingleton((i) => ShoplistService(shoplistRepository: i.get())),
+    Bind.lazySingleton((i) => ProductService(productRepository: i.get())),
+    Bind.lazySingleton(
+        (i) => MarketplaceService(marketplaceRepository: i.get())),
     Bind.lazySingleton((i) => HomeController()),
   ];
 

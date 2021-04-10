@@ -10,7 +10,7 @@ class PurchaseItemRepository extends Disposable
   Future<Database> _database() => DatabaseHelper.instance.database;
 
   @override
-  Future<List<PurchaseItemModel>?> getAll() async {
+  Future<List<PurchaseItemModel>> getAll() async {
     final Database db = await _database();
     try {
       final purchaseItems = await db.query(PURCHASE_ITEM_TABLE);
@@ -38,11 +38,11 @@ class PurchaseItemRepository extends Disposable
       print(error);
     }
 
-    return null;
+    return [];
   }
 
   @override
-  Future<PurchaseItemModel?> getById(int id) async {
+  Future<PurchaseItemModel> getById(int id) async {
     final Database db = await _database();
 
     try {
@@ -67,11 +67,11 @@ class PurchaseItemRepository extends Disposable
       print(error);
     }
 
-    return null;
+    return [].first;
   }
 
   @override
-  Future<int?> getCount() async {
+  Future<int> getCount() async {
     final Database db = await _database();
 
     try {
@@ -81,7 +81,7 @@ class PurchaseItemRepository extends Disposable
       print(error);
     }
 
-    return null;
+    return 0;
   }
 
   @override

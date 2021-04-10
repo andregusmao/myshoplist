@@ -9,7 +9,7 @@ class ShoplistRepository extends Disposable implements IShoplistRepository {
   Future<Database> _database() => DatabaseHelper.instance.database;
 
   @override
-  Future<List<ShoplistModel>?> getAll() async {
+  Future<List<ShoplistModel>> getAll() async {
     final Database db = await _database();
     try {
       final shoplists = await db.query(SHOPLIST_TABLE);
@@ -30,11 +30,11 @@ class ShoplistRepository extends Disposable implements IShoplistRepository {
       print(error);
     }
 
-    return null;
+    return [];
   }
 
   @override
-  Future<ShoplistModel?> getById(int id) async {
+  Future<ShoplistModel> getById(int id) async {
     final Database db = await _database();
 
     try {
@@ -56,11 +56,11 @@ class ShoplistRepository extends Disposable implements IShoplistRepository {
       print(error);
     }
 
-    return null;
+    return [].first;
   }
 
   @override
-  Future<int?> getCount() async {
+  Future<int> getCount() async {
     final Database db = await _database();
 
     try {
@@ -70,7 +70,7 @@ class ShoplistRepository extends Disposable implements IShoplistRepository {
       print(error);
     }
 
-    return null;
+    return 0;
   }
 
   @override

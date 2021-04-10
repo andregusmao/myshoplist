@@ -9,7 +9,7 @@ class PurchaseRepository extends Disposable implements IPurchaseRepository {
   Future<Database> _database() => DatabaseHelper.instance.database;
 
   @override
-  Future<List<PurchaseModel>?> getAll() async {
+  Future<List<PurchaseModel>> getAll() async {
     final Database db = await _database();
     try {
       final purchases = await db.query(PURCHASE_TABLE);
@@ -31,11 +31,11 @@ class PurchaseRepository extends Disposable implements IPurchaseRepository {
       print(error);
     }
 
-    return null;
+    return [];
   }
 
   @override
-  Future<PurchaseModel?> getById(int id) async {
+  Future<PurchaseModel> getById(int id) async {
     final Database db = await _database();
 
     try {
@@ -58,11 +58,11 @@ class PurchaseRepository extends Disposable implements IPurchaseRepository {
       print(error);
     }
 
-    return null;
+    return [].first;
   }
 
   @override
-  Future<int?> getCount() async {
+  Future<int> getCount() async {
     final Database db = await _database();
 
     try {
@@ -72,7 +72,7 @@ class PurchaseRepository extends Disposable implements IPurchaseRepository {
       print(error);
     }
 
-    return null;
+    return 0;
   }
 
   @override

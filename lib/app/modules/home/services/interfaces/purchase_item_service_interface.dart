@@ -4,7 +4,7 @@ abstract class IPurchaseItemService {
   Future<List<PurchaseItemModel>> getAll();
   Future<int> getCount();
   Future<PurchaseItemModel> getById(int id);
-  Future<int> insert(PurchaseItemModel marketplaceModel);
-  Future<int> update(PurchaseItemModel marketplaceModel);
-  Future<int> delete(int id);
+  Future<int?> insert(PurchaseItemModel purchaseItemModel);
+  Future<int?> update(PurchaseItemModel purchaseItemModel);
+  Future<int?> delete(int id);
 }

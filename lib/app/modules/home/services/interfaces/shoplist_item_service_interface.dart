@@ -4,7 +4,7 @@ abstract class IShoplistItemService {
   Future<List<ShoplistItemModel>> getAll();
   Future<int> getCount();
   Future<ShoplistItemModel> getById(int id);
-  Future<int> insert(ShoplistItemModel marketplaceModel);
-  Future<int> update(ShoplistItemModel marketplaceModel);
-  Future<int> delete(int id);
+  Future<int?> insert(ShoplistItemModel shoplistItemModel);
+  Future<int?> update(ShoplistItemModel shoplistItemModel);
+  Future<int?> delete(int id);
 }

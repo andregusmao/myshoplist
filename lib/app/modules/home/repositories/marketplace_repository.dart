@@ -10,7 +10,7 @@ class MarketplaceRepository extends Disposable
   Future<Database> _database() => DatabaseHelper.instance.database;
 
   @override
-  Future<List<MarketplaceModel>?> getAll() async {
+  Future<List<MarketplaceModel>> getAll() async {
     final Database db = await _database();
 
     try {
@@ -37,11 +37,11 @@ class MarketplaceRepository extends Disposable
       print(error);
     }
 
-    return null;
+    return [];
   }
 
   @override
-  Future<MarketplaceModel?> getById(int id) async {
+  Future<MarketplaceModel> getById(int id) async {
     final Database db = await _database();
 
     try {
@@ -66,11 +66,11 @@ class MarketplaceRepository extends Disposable
       print(error);
     }
 
-    return null;
+    return [].first;
   }
 
   @override
-  Future<int?> getCount() async {
+  Future<int> getCount() async {
     final Database db = await _database();
 
     try {
@@ -80,7 +80,7 @@ class MarketplaceRepository extends Disposable
       print(error);
     }
 
-    return null;
+    return 0;
   }
 
   @override

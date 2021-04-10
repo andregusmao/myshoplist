@@ -8,6 +8,7 @@ import 'package:myshoplist/app/modules/home/services/product_service.dart';
 import 'package:myshoplist/app/modules/home/services/marketplace_service.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/app/modules/home/controllers/home_controller.dart';
+import 'package:myshoplist/app/modules/home/views/shoplist_view.dart';
 
 import 'views/home_view.dart';
 
@@ -30,7 +31,7 @@ class HomeModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(
       Modular.initialRoute,
-      child: (_, args) => HomeView(),
+      child: (_, args) => ShoplistView(),
     ),
   ];
 }

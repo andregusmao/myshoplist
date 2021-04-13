@@ -3,7 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/app/components/floating_button_component.dart';
 import 'package:myshoplist/app/modules/home/controllers/shoplist_controller.dart';
 import 'package:myshoplist/app/modules/home/models/shoplist_model.dart';
-import 'package:myshoplist/app/modules/home/views/shoplist_create_view.dart';
 
 class ShoplistEditView extends StatefulWidget {
   final TextEditingController nameController = TextEditingController();

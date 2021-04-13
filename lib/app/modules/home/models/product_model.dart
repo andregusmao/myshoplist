@@ -1,24 +1,24 @@
 import 'package:myshoplist/app/constants/product_constants.dart';
 
 class ProductModel {
-  final int id;
+  final int? id;
   final String barcode;
   final String description;
-  final String brand;
+  final String? brand;
   final String unit;
-  final double weight;
-  final DateTime createDate;
-  final DateTime updateDate;
+  final double? weight;
+  final DateTime? createDate;
+  final DateTime? updateDate;
 
   ProductModel({
-    required this.id,
+    this.id,
     required this.barcode,
     required this.description,
-    required this.brand,
+    this.brand,
     required this.unit,
-    required this.weight,
-    required this.createDate,
-    required this.updateDate,
+    this.weight,
+    this.createDate,
+    this.updateDate,
   });
 
   static ProductModel fromMap(Map<String, dynamic> data) {

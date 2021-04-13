@@ -17,14 +17,18 @@ class PurchaseRepository extends Disposable implements IPurchaseRepository {
         purchases.length,
         (index) {
           return PurchaseModel(
-            id: purchases[index][PURCHASE_COLUMN_ID] as int,
-            shoplistId: purchases[index][PURCHASE_COLUMN_SHOPLIST_ID] as int,
-            marketplaceId:
-                purchases[index][PURCHASE_COLUMN_MARKETPLACE_ID] as int,
-            startDate: purchases[index][PURCHASE_COLUMN_START_DATE] as DateTime,
-            finishDate:
-                purchases[index][PURCHASE_COLUMN_FINISH_DATE] as DateTime,
-          );
+              id: purchases[index][PURCHASE_COLUMN_ID] as int,
+              shoplistId: purchases[index][PURCHASE_COLUMN_SHOPLIST_ID] as int,
+              marketplaceId:
+                  purchases[index][PURCHASE_COLUMN_MARKETPLACE_ID] as int,
+              startDate:
+                  purchases[index][PURCHASE_COLUMN_START_DATE] as DateTime?,
+              finishDate:
+                  purchases[index][PURCHASE_COLUMN_FINISH_DATE] as DateTime?,
+              createDate:
+                  purchases[index][PURCHASE_COLUMN_CREATE_DATE] as DateTime?,
+              updateDate:
+                  purchases[index][PURCHASE_COLUMN_UPDATE_DATE] as DateTime?);
         },
       );
     } catch (error) {

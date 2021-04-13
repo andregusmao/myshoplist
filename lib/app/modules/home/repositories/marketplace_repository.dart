@@ -26,10 +26,10 @@ class MarketplaceRepository extends Disposable
                 marketplaces[index][MARKETPLACE_COLUMN_LATITUDE] as String,
             longitude:
                 marketplaces[index][MARKETPLACE_COLUMN_LONGITUDE] as String,
-            createDate:
-                marketplaces[index][MARKETPLACE_COLUMN_CREATE_DATE] as DateTime,
-            updateDate:
-                marketplaces[index][MARKETPLACE_COLUMN_UPDATE_DATE] as DateTime,
+            createDate: marketplaces[index][MARKETPLACE_COLUMN_CREATE_DATE]
+                as DateTime?,
+            updateDate: marketplaces[index][MARKETPLACE_COLUMN_UPDATE_DATE]
+                as DateTime?,
           );
         },
       );
@@ -60,7 +60,7 @@ class MarketplaceRepository extends Disposable
         whereArgs: [id],
       );
       if (marketplace.isNotEmpty) {
-        return MarketplaceModel.fromMap(marketplace.first);
+        return MarketplaceModel.readData(marketplace.first);
       }
     } catch (error) {
       print(error);
@@ -88,7 +88,7 @@ class MarketplaceRepository extends Disposable
     final Database db = await _database();
 
     try {
-      return await db.insert(MARKETPLACE_TABLE, marketplaceModel.toMap());
+      return await db.insert(MARKETPLACE_TABLE, marketplaceModel.writeData());
     } catch (error) {
       print(error);
     }
@@ -103,7 +103,7 @@ class MarketplaceRepository extends Disposable
     try {
       return await db.update(
         MARKETPLACE_TABLE,
-        marketplaceModel.toMap(),
+        marketplaceModel.writeData(),
         where: '$MARKETPLACE_COLUMN_ID = ?',
         whereArgs: [marketplaceModel.id],
       );

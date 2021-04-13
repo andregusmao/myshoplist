@@ -1,19 +1,22 @@
 import 'package:myshoplist/app/constants/purchase_constants.dart';
 
 class PurchaseModel {
-  final int id;
+  final int? id;
   final int shoplistId;
   final int marketplaceId;
-  final DateTime startDate;
-  final DateTime finishDate;
+  final DateTime? startDate;
+  final DateTime? finishDate;
+  final DateTime? createDate;
+  final DateTime? updateDate;
 
-  PurchaseModel({
-    required this.id,
-    required this.shoplistId,
-    required this.marketplaceId,
-    required this.startDate,
-    required this.finishDate,
-  });
+  PurchaseModel(
+      {this.id,
+      required this.shoplistId,
+      required this.marketplaceId,
+      this.startDate,
+      this.finishDate,
+      this.createDate,
+      required this.updateDate});
 
   static PurchaseModel fromMap(Map<String, dynamic> data) {
     return PurchaseModel(
@@ -22,6 +25,8 @@ class PurchaseModel {
       marketplaceId: data[PURCHASE_COLUMN_MARKETPLACE_ID],
       startDate: data[PURCHASE_COLUMN_START_DATE],
       finishDate: data[PURCHASE_COLUMN_FINISH_DATE],
+      createDate: data[PURCHASE_COLUMN_CREATE_DATE],
+      updateDate: data[PURCHASE_COLUMN_UPDATE_DATE],
     );
   }
 

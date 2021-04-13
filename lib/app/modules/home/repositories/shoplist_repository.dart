@@ -19,10 +19,10 @@ class ShoplistRepository extends Disposable implements IShoplistRepository {
           return ShoplistModel(
             id: shoplists[index][SHOPLIST_COLUMN_ID] as int,
             name: shoplists[index][SHOPLIST_COLUMN_NAME] as String,
-            createDate:
-                shoplists[index][SHOPLIST_COLUMN_CREATE_DATE] as DateTime,
-            updateDate:
-                shoplists[index][SHOPLIST_COLUMN_UPDATE_DATE] as DateTime,
+            createDate: DateTime.tryParse(
+                shoplists[index][SHOPLIST_COLUMN_CREATE_DATE].toString()),
+            updateDate: DateTime.tryParse(
+                shoplists[index][SHOPLIST_COLUMN_UPDATE_DATE].toString()),
           );
         },
       );
@@ -50,7 +50,7 @@ class ShoplistRepository extends Disposable implements IShoplistRepository {
         whereArgs: [id],
       );
       if (shoplist.isNotEmpty) {
-        return ShoplistModel.fromMap(shoplist.first);
+        return ShoplistModel.readData(shoplist.first);
       }
     } catch (error) {
       print(error);
@@ -78,7 +78,7 @@ class ShoplistRepository extends Disposable implements IShoplistRepository {
     final Database db = await _database();
 
     try {
-      return await db.insert(SHOPLIST_TABLE, shoplistModel.toMap());
+      return await db.insert(SHOPLIST_TABLE, shoplistModel.writeData());
     } catch (error) {
       print(error);
     }
@@ -93,7 +93,7 @@ class ShoplistRepository extends Disposable implements IShoplistRepository {
     try {
       return await db.update(
         SHOPLIST_TABLE,
-        shoplistModel.toMap(),
+        shoplistModel.writeData(),
         where: '$SHOPLIST_COLUMN_ID = ?',
         whereArgs: [shoplistModel.id],
       );

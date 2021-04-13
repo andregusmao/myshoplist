@@ -10,10 +10,14 @@ class ShopListItemRepository extends Disposable
   Future<Database> _database() => DatabaseHelper.instance.database;
 
   @override
-  Future<List<ShoplistItemModel>> getAll() async {
+  Future<List<ShoplistItemModel>> getAll(int shoplistId) async {
     final Database db = await _database();
     try {
-      final shoplistItems = await db.query(SHOPLIST_ITEM_TABLE);
+      final shoplistItems = await db.query(
+        SHOPLIST_ITEM_TABLE,
+        where: '$SHOPLIST_ITEM_COLUMN_SHOPLIST_ID = ?',
+        whereArgs: [shoplistId],
+      );
       return List.generate(
         shoplistItems.length,
         (index) {
@@ -68,12 +72,12 @@ class ShopListItemRepository extends Disposable
   }
 
   @override
-  Future<int> getCount() async {
+  Future<int> getCount(int shoplistId) async {
     final Database db = await _database();
 
     try {
-      return Sqflite.firstIntValue(
-          await db.rawQuery('SELECT COUNT(*) FROM $SHOPLIST_ITEM_TABLE'))!;
+      return Sqflite.firstIntValue(await db.rawQuery(
+          'SELECT COUNT(*) FROM $SHOPLIST_ITEM_TABLE where $SHOPLIST_ITEM_COLUMN_SHOPLIST_ID = $shoplistId'))!;
     } catch (error) {
       print(error);
     }

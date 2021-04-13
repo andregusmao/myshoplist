@@ -1,8 +1,8 @@
 import 'package:myshoplist/app/modules/home/models/shoplist_item_model.dart';
 
 abstract class IShoplistItemService {
-  Future<List<ShoplistItemModel>> getAll();
-  Future<int> getCount();
+  Future<List<ShoplistItemModel>> getAll(int shoplistId);
+  Future<int> getCount(int shoplistId);
   Future<ShoplistItemModel> getById(int id);
   Future<int?> insert(ShoplistItemModel shoplistItemModel);
   Future<int?> update(ShoplistItemModel shoplistItemModel);

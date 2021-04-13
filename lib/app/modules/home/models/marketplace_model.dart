@@ -3,23 +3,23 @@ import 'package:myshoplist/app/constants/marketplace_constants.dart';
 class MarketplaceModel {
   final int? id;
   final String name;
-  final String address;
-  final String latitude;
-  final String longitude;
-  final DateTime createDate;
+  final String? address;
+  final String? latitude;
+  final String? longitude;
+  final DateTime? createDate;
   final DateTime? updateDate;
 
   MarketplaceModel({
     this.id,
     required this.name,
-    required this.address,
-    required this.latitude,
-    required this.longitude,
-    required this.createDate,
+    this.address,
+    this.latitude,
+    this.longitude,
+    this.createDate,
     this.updateDate,
   });
 
-  static MarketplaceModel fromMap(Map<String, dynamic> data) {
+  static MarketplaceModel readData(Map<String, dynamic> data) {
     return MarketplaceModel(
       id: data[MARKETPLACE_COLUMN_ID],
       name: data[MARKETPLACE_COLUMN_NAME],
@@ -31,7 +31,7 @@ class MarketplaceModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> writeData() {
     final map = Map<String, dynamic>();
     map[MARKETPLACE_COLUMN_ID] = this.id;
     map[MARKETPLACE_COLUMN_NAME] = this.name;

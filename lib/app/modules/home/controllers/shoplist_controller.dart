@@ -1,22 +1,28 @@
 import 'package:mobx/mobx.dart';
 import 'package:myshoplist/app/modules/home/models/shoplist_model.dart';
-import 'package:myshoplist/app/modules/home/repositories/shoplist_repository.dart';
+import 'package:myshoplist/app/modules/home/services/interfaces/shoplist_item_service_interface.dart';
 import 'package:myshoplist/app/modules/home/services/interfaces/shoplist_service_interface.dart';
-import 'package:myshoplist/app/modules/home/services/shoplist_service.dart';
 part 'shoplist_controller.g.dart';
 
 class ShoplistController = _ShoplistControllerBase with _$ShoplistController;
 
 abstract class _ShoplistControllerBase with Store {
-  final IShoplistService shoplistService =
-      ShoplistService(shoplistRepository: ShoplistRepository());
+  final IShoplistService shoplistService;
+  final IShoplistItemService shoplistItemService;
 
-  _ShoplistControllerBase() {
+  _ShoplistControllerBase(
+      {required this.shoplistItemService, required this.shoplistService}) {
     this.shopslists = this.list();
   }
 
   @observable
   Future<List<ShoplistModel>>? shopslists;
+
+  int getItemsCount(int id) {
+    int count = 0;
+    this.shoplistItemService.getCount(id).then((value) => count = value);
+    return count;
+  }
 
   @action
   Future<List<ShoplistModel>> list() async =>

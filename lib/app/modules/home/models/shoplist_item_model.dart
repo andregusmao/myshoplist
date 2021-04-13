@@ -1,20 +1,20 @@
 import 'package:myshoplist/app/constants/shoplist_item_constants.dart';
 
 class ShoplistItemModel {
-  final int id;
+  final int? id;
   final int shoplistId;
   final int productId;
   final double quantity;
-  final DateTime createDate;
-  final DateTime updateDate;
+  final DateTime? createDate;
+  final DateTime? updateDate;
 
   ShoplistItemModel({
-    required this.id,
+    this.id,
     required this.shoplistId,
     required this.productId,
     required this.quantity,
-    required this.createDate,
-    required this.updateDate,
+    this.createDate,
+    this.updateDate,
   });
 
   static ShoplistItemModel fromMap(Map<String, dynamic> data) {

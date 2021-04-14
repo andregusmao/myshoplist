@@ -18,6 +18,7 @@ class ShoplistEditView extends StatefulWidget {
 class _ShoplistEditViewState
     extends ModularState<ShoplistEditView, ShoplistController> {
   final ShoplistModel shoplistModel;
+  final GlobalKey<FormState> _editForm = GlobalKey<FormState>();
 
   _ShoplistEditViewState(this.shoplistModel);
 
@@ -34,7 +35,7 @@ class _ShoplistEditViewState
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.insert_drive_file_rounded),
+              child: Icon(Icons.list_rounded),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -47,10 +48,18 @@ class _ShoplistEditViewState
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
+            key: _editForm,
             child: Column(
               children: [
                 TextFormField(
                   controller: this.widget.nameController,
+                  validator: (value) {
+                    print('Value: $value');
+                    if (value == null || value.isEmpty) {
+                      return 'Nome é obrigatório';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'nome da lista',
@@ -65,27 +74,51 @@ class _ShoplistEditViewState
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(right: 8),
             child: FloatingButtonComponent(
               icon: Icons.delete_rounded,
               key: UniqueKey(),
               onTap: () {
-                controller.delete(this.shoplistModel.id!);
-                Modular.to.pop();
+                showDialog(
+                  context: context,
+                  builder: (BuildContext dialogContext) {
+                    return AlertDialog(
+                      title: Text('Excluir lista'),
+                      content:
+                          Text('Tem certeza que deseja excluir essa lista?'),
+                      actions: [
+                        TextButton(
+                          child: Text('Não'),
+                          onPressed: () => Navigator.of(dialogContext).pop(),
+                        ),
+                        TextButton(
+                          child: Text('Sim'),
+                          onPressed: () {
+                            controller.delete(this.shoplistModel.id!);
+                            Navigator.of(dialogContext).pop();
+                            Modular.to.pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
               },
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 8),
             child: FloatingButtonComponent(
               icon: Icons.save_rounded,
               key: UniqueKey(),
               onTap: () {
-                controller.update(ShoplistModel(
-                  id: this.shoplistModel.id,
-                  name: this.widget.nameController.text,
-                ));
-                Modular.to.pop();
+                if (_editForm.currentState!.validate()) {
+                  controller.update(ShoplistModel(
+                    id: this.shoplistModel.id,
+                    name: this.widget.nameController.text,
+                  ));
+                  Modular.to.pop();
+                }
               },
             ),
           ),

@@ -20,11 +20,8 @@ class ShoplistService extends Disposable implements IShoplistService {
   Future<int> getCount() async => await this.shoplistRepository.getCount();
 
   @override
-  Future<int?> insert(ShoplistModel shoplistModel) async {
-    int? id = await this.shoplistRepository.insert(shoplistModel);
-    print('ID: $id');
-    return id;
-  }
+  Future<int?> insert(ShoplistModel shoplistModel) async =>
+      await this.shoplistRepository.insert(shoplistModel);
 
   @override
   Future<int?> update(ShoplistModel shoplistModel) async =>

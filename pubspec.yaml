@@ -12,6 +12,7 @@ dependencies:
   mobx: ^2.0.1
   flutter_mobx: ^2.0.0
   intl:
+  flutter_svg:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -26,3 +27,5 @@ flutter:
     fonts:
       - asset: lib/app/assets/fonts/Poppins-Regular.ttf
         weight: 100
+  assets:
+    - lib/app/assets/icons/barcode.png

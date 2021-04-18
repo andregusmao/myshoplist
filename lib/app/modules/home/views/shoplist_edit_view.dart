@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/app/components/floating_button_component.dart';
 import 'package:myshoplist/app/modules/home/controllers/shoplist_controller.dart';
 import 'package:myshoplist/app/modules/home/models/shoplist_model.dart';
+import 'package:myshoplist/app/modules/home/views/shoplist_items_view.dart';
 
 class ShoplistEditView extends StatefulWidget {
   final TextEditingController nameController = TextEditingController();
@@ -45,16 +46,15 @@ class _ShoplistEditViewState
         ),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _editForm,
-            child: Column(
-              children: [
-                TextFormField(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Form(
+                key: _editForm,
+                child: TextFormField(
                   controller: this.widget.nameController,
                   validator: (value) {
-                    print('Value: $value');
                     if (value == null || value.isEmpty) {
                       return 'Nome é obrigatório';
                     }
@@ -65,9 +65,15 @@ class _ShoplistEditViewState
                     labelText: 'nome da lista',
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ShoplistItemsView(
+                shoplistId: this.shoplistModel.id!,
+              ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: Row(

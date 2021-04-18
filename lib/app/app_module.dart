@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/app/modules/home/controllers/shoplist_controller.dart';
+import 'package:myshoplist/app/modules/home/controllers/shoplist_item_controller.dart';
 import 'package:myshoplist/app/modules/home/repositories/marketplace_repository.dart';
 import 'package:myshoplist/app/modules/home/repositories/product_repository.dart';
 import 'package:myshoplist/app/modules/home/repositories/purchase_item_repository.dart';
@@ -40,6 +41,10 @@ class AppModule extends Module {
     Bind.lazySingleton((i) => ShoplistController(
           shoplistItemService: i.get(),
           shoplistService: i.get(),
+        )),
+    Bind.lazySingleton((i) => ShoplistItemController(
+          shoplistId: 0,
+          shoplistItemService: i.get(),
         )),
   ];
 

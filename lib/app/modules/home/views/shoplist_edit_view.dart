@@ -84,32 +84,29 @@ class _ShoplistEditViewState
             child: FloatingButtonComponent(
               icon: Icons.delete_rounded,
               key: UniqueKey(),
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext dialogContext) {
-                    return AlertDialog(
-                      title: Text('Excluir lista'),
-                      content:
-                          Text('Tem certeza que deseja excluir essa lista?'),
-                      actions: [
-                        TextButton(
-                          child: Text('Não'),
-                          onPressed: () => Navigator.of(dialogContext).pop(),
-                        ),
-                        TextButton(
-                          child: Text('Sim'),
-                          onPressed: () {
-                            controller.delete(this.shoplistModel.id!);
-                            Navigator.of(dialogContext).pop();
-                            Modular.to.pop();
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
+              onTap: () => showDialog(
+                context: context,
+                builder: (BuildContext dialogContext) {
+                  return AlertDialog(
+                    title: Text('Excluir lista'),
+                    content: Text('Tem certeza que deseja excluir essa lista?'),
+                    actions: [
+                      TextButton(
+                        child: Text('Não'),
+                        onPressed: () => Navigator.of(dialogContext).pop(),
+                      ),
+                      TextButton(
+                        child: Text('Sim'),
+                        onPressed: () {
+                          controller.delete(this.shoplistModel.id!);
+                          Navigator.of(dialogContext).pop();
+                          Modular.to.pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
           Padding(

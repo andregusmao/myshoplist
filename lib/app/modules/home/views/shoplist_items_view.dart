@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/app/components/fullscreen_message_component.dart';
 import 'package:myshoplist/app/components/shoplist_item_tile_component.dart';
@@ -17,12 +18,15 @@ class ShoplistItemsView extends StatefulWidget {
 
 class _ShoplistItemsViewState
     extends ModularState<ShoplistItemsView, ShoplistItemController> {
+  final TextEditingController barcodeController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Form(
           child: TextFormField(
+            controller: this.barcodeController,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               labelText: 'código de barras',
@@ -30,9 +34,13 @@ class _ShoplistItemsViewState
                 icon: Image(
                   image: AssetImage('lib/app/assets/icons/barcode.png'),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  // Open barcode scanner
+                },
               ),
             ),
+            keyboardType: TextInputType.number,
+            onEditingComplete: () {},
           ),
         ),
         FutureBuilder<List<ShoplistItemModel>>(

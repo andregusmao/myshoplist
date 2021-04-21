@@ -1,3 +1,5 @@
+import 'package:myshoplist/app/modules/home/models/shoplist_item_model.dart';
+import 'package:myshoplist/app/modules/home/repositories/shoplist_item_repository.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/app/constants/shoplist_constants.dart';
@@ -17,13 +19,13 @@ class ShoplistRepository extends Disposable implements IShoplistRepository {
         shoplists.length,
         (index) {
           return ShoplistModel(
-            id: shoplists[index][SHOPLIST_COLUMN_ID] as int,
-            name: shoplists[index][SHOPLIST_COLUMN_NAME] as String,
-            createDate: DateTime.tryParse(
-                shoplists[index][SHOPLIST_COLUMN_CREATE_DATE].toString()),
-            updateDate: DateTime.tryParse(
-                shoplists[index][SHOPLIST_COLUMN_UPDATE_DATE].toString()),
-          );
+              id: shoplists[index][SHOPLIST_COLUMN_ID] as int,
+              name: shoplists[index][SHOPLIST_COLUMN_NAME] as String,
+              createDate: DateTime.tryParse(
+                  shoplists[index][SHOPLIST_COLUMN_CREATE_DATE].toString()),
+              updateDate: DateTime.tryParse(
+                  shoplists[index][SHOPLIST_COLUMN_UPDATE_DATE].toString()),
+              items: []);
         },
       );
     } catch (error) {
@@ -38,18 +40,18 @@ class ShoplistRepository extends Disposable implements IShoplistRepository {
     final Database db = await _database();
 
     try {
-      List<Map<String, dynamic>> shoplist = await db.query(
-        SHOPLIST_TABLE,
-        columns: [
-          SHOPLIST_COLUMN_ID,
-          SHOPLIST_COLUMN_NAME,
-          SHOPLIST_COLUMN_CREATE_DATE,
-          SHOPLIST_COLUMN_UPDATE_DATE,
-        ],
-        where: '$SHOPLIST_COLUMN_ID = ?',
-        whereArgs: [id],
-      );
+      List<Map<String, dynamic>> shoplist = await db.query(SHOPLIST_TABLE,
+          columns: [
+            SHOPLIST_COLUMN_ID,
+            SHOPLIST_COLUMN_NAME,
+            SHOPLIST_COLUMN_CREATE_DATE,
+            SHOPLIST_COLUMN_UPDATE_DATE,
+          ],
+          where: '$SHOPLIST_COLUMN_ID = ?',
+          whereArgs: [id],
+          limit: 1);
       if (shoplist.isNotEmpty) {
+        shoplist.first['items'] = await ShopListItemRepository().getAll(id);
         return ShoplistModel.readData(shoplist.first);
       }
     } catch (error) {

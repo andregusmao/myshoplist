@@ -3,13 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/app/components/fullscreen_message_component.dart';
 import 'package:myshoplist/app/components/shoplist_item_tile_component.dart';
-import 'package:myshoplist/app/modules/home/controllers/shoplist_item_controller.dart';
+import 'package:myshoplist/app/modules/home/controllers/shoplist_controller.dart';
 import 'package:myshoplist/app/modules/home/models/shoplist_item_model.dart';
 
 class ShoplistItemsView extends StatefulWidget {
-  final int shoplistId;
+  final List<ShoplistItemModel> shoplistItemModel;
 
-  const ShoplistItemsView({Key? key, required this.shoplistId})
+  const ShoplistItemsView({Key? key, required this.shoplistItemModel})
       : super(key: key);
 
   @override
@@ -17,7 +17,7 @@ class ShoplistItemsView extends StatefulWidget {
 }
 
 class _ShoplistItemsViewState
-    extends ModularState<ShoplistItemsView, ShoplistItemController> {
+    extends ModularState<ShoplistItemsView, ShoplistController> {
   final TextEditingController barcodeController = TextEditingController();
 
   @override
@@ -43,23 +43,14 @@ class _ShoplistItemsViewState
             onEditingComplete: () {},
           ),
         ),
-        FutureBuilder<List<ShoplistItemModel>>(
-            future: controller.list(),
-            initialData: [],
-            builder: (context, value) {
-              List<ShoplistItemModel> list = value.data ?? [];
-              return list.isNotEmpty
-                  ? ListView.builder(
-                      itemCount: list.length,
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.only(bottom: 96),
-                      itemBuilder: (context, index) =>
-                          ShoplistItemTileComponent(),
-                    )
-                  : FullscreenMessageComponent(
-                      message: 'Nenhum item cadastrado',
-                    );
-            })
+        this.widget.shoplistItemModel.isNotEmpty
+            ? ListView.builder(
+                itemCount: this.widget.shoplistItemModel.length,
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(bottom: 96),
+                itemBuilder: (context, index) => ShoplistItemTileComponent(),
+              )
+            : FullscreenMessageComponent(message: 'Nenhum item cadastrado'),
       ],
     );
   }

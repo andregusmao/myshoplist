@@ -70,7 +70,7 @@ class _ShoplistEditViewState
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ShoplistItemsView(
-                shoplistId: this.shoplistModel.id!,
+                shoplistItemModel: this.shoplistModel.items ?? [],
               ),
             ),
           ],

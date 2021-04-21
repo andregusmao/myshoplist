@@ -1,26 +1,29 @@
 import 'package:intl/intl.dart';
 import 'package:myshoplist/app/constants/shoplist_constants.dart';
+import 'package:myshoplist/app/modules/home/models/shoplist_item_model.dart';
 
 class ShoplistModel {
   final int? id;
   final String name;
   final DateTime? createDate;
   final DateTime? updateDate;
+  final List<ShoplistItemModel>? items;
 
   ShoplistModel({
     this.id,
     required this.name,
     this.createDate,
     this.updateDate,
+    this.items,
   });
 
   static ShoplistModel readData(Map<String, dynamic> data) {
     return ShoplistModel(
-      id: data[SHOPLIST_COLUMN_ID],
-      name: data[SHOPLIST_COLUMN_NAME],
-      createDate: data[SHOPLIST_COLUMN_CREATE_DATE],
-      updateDate: data[SHOPLIST_COLUMN_UPDATE_DATE],
-    );
+        id: data[SHOPLIST_COLUMN_ID],
+        name: data[SHOPLIST_COLUMN_NAME],
+        createDate: data[SHOPLIST_COLUMN_CREATE_DATE],
+        updateDate: data[SHOPLIST_COLUMN_UPDATE_DATE],
+        items: data['items']);
   }
 
   Map<String, dynamic> writeData() {

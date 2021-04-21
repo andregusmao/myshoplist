@@ -23,8 +23,10 @@ class ShoplistTileComponent extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             width: 1,
+            color: Colors.blue,
           ),
           borderRadius: BorderRadius.circular(8),
+          color: Colors.blue[100],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

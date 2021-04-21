@@ -1,6 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/app/modules/home/controllers/shoplist_controller.dart';
-import 'package:myshoplist/app/modules/home/controllers/shoplist_item_controller.dart';
 import 'package:myshoplist/app/modules/home/repositories/marketplace_repository.dart';
 import 'package:myshoplist/app/modules/home/repositories/product_repository.dart';
 import 'package:myshoplist/app/modules/home/repositories/purchase_item_repository.dart';
@@ -13,6 +12,7 @@ import 'package:myshoplist/app/modules/home/services/purchase_item_service.dart'
 import 'package:myshoplist/app/modules/home/services/purchase_service.dart';
 import 'package:myshoplist/app/modules/home/services/shoplist_item_service.dart';
 import 'package:myshoplist/app/modules/home/services/shoplist_service.dart';
+import 'package:myshoplist/app/modules/home/views/home_view.dart';
 import 'package:myshoplist/app/modules/home/views/shoplist_create_view.dart';
 import 'package:myshoplist/app/modules/home/views/shoplist_edit_view.dart';
 import 'package:myshoplist/app/modules/home/views/shoplist_view.dart';
@@ -42,15 +42,11 @@ class AppModule extends Module {
           shoplistItemService: i.get(),
           shoplistService: i.get(),
         )),
-    Bind.lazySingleton((i) => ShoplistItemController(
-          shoplistId: 0,
-          shoplistItemService: i.get(),
-        )),
   ];
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => ShoplistView()),
+    ChildRoute('/', child: (_, args) => HomeView()),
     ChildRoute('/shoplists', child: (_, args) => ShoplistView()),
     ChildRoute('/shoplists/create', child: (_, args) => ShoplistCreateView()),
     ChildRoute('/shoplists/edit',

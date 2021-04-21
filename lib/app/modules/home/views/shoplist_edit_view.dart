@@ -26,6 +26,7 @@ class _ShoplistEditViewState
   @override
   Widget build(BuildContext context) {
     this.widget.nameController.text = this.shoplistModel.name;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

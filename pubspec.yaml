@@ -29,3 +29,7 @@ flutter:
         weight: 100
   assets:
     - lib/app/assets/icons/barcode.png
+    - lib/app/assets/icons/marketplace.png
+    - lib/app/assets/icons/product.png
+    - lib/app/assets/icons/shoplist.png
+    - lib/app/assets/icons/purchase.png

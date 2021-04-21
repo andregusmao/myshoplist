@@ -19,6 +19,10 @@ class _ShoplistViewState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.chevron_left),
+          onPressed: () => Modular.to.pop(),
+        ),
         title: Row(
           children: [
             Padding(

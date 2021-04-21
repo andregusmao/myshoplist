@@ -1,4 +1,3 @@
-import 'package:myshoplist/app/modules/home/models/shoplist_item_model.dart';
 import 'package:myshoplist/app/modules/home/repositories/shoplist_item_repository.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter_modular/flutter_modular.dart';

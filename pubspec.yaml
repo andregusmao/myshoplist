@@ -12,7 +12,8 @@ dependencies:
   mobx: ^2.0.1
   flutter_mobx: ^2.0.0
   intl:
-  flutter_svg:
+  google_maps_flutter:
+  location:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -25,11 +26,11 @@ flutter:
   fonts:
   - family: Poppins
     fonts:
-      - asset: lib/app/assets/fonts/Poppins-Regular.ttf
+      - asset: lib/assets/fonts/Poppins-Regular.ttf
         weight: 100
   assets:
-    - lib/app/assets/icons/barcode.png
-    - lib/app/assets/icons/marketplace.png
-    - lib/app/assets/icons/product.png
-    - lib/app/assets/icons/shoplist.png
-    - lib/app/assets/icons/purchase.png
+    - lib/assets/icons/barcode.png
+    - lib/assets/icons/marketplace.png
+    - lib/assets/icons/product.png
+    - lib/assets/icons/shoplist.png
+    - lib/assets/icons/purchase.png

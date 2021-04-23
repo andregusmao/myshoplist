@@ -18,19 +18,21 @@ class MarketplaceRepository extends Disposable
       return List.generate(
         marketplaces.length,
         (index) {
-          return MarketplaceModel(
+          var x = 1;
+          MarketplaceModel model = MarketplaceModel(
             id: marketplaces[index][MARKETPLACE_COLUMN_ID] as int,
             name: marketplaces[index][MARKETPLACE_COLUMN_NAME] as String,
-            address: marketplaces[index][MARKETPLACE_COLUMN_ADDRESS] as String,
+            address: marketplaces[index][MARKETPLACE_COLUMN_ADDRESS] as String?,
             latitude:
-                marketplaces[index][MARKETPLACE_COLUMN_LATITUDE] as String,
+                marketplaces[index][MARKETPLACE_COLUMN_LATITUDE] as String?,
             longitude:
-                marketplaces[index][MARKETPLACE_COLUMN_LONGITUDE] as String,
-            createDate: marketplaces[index][MARKETPLACE_COLUMN_CREATE_DATE]
-                as DateTime?,
-            updateDate: marketplaces[index][MARKETPLACE_COLUMN_UPDATE_DATE]
-                as DateTime?,
+                marketplaces[index][MARKETPLACE_COLUMN_LONGITUDE] as String?,
+            createDate: DateTime.tryParse(
+                marketplaces[index][MARKETPLACE_COLUMN_CREATE_DATE].toString()),
+            updateDate: DateTime.tryParse(
+                marketplaces[index][MARKETPLACE_COLUMN_UPDATE_DATE].toString()),
           );
+          return model;
         },
       );
     } catch (error) {

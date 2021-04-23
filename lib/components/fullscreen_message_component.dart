@@ -8,21 +8,17 @@ class FullscreenMessageComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              this.message,
-              style: TextStyle(fontSize: 24),
-            )
-          ],
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        alignment: Alignment.center,
+        child: Text(
+          this.message,
+          style: TextStyle(fontSize: 24),
+          softWrap: true,
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 }

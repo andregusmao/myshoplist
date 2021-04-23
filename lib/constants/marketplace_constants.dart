@@ -7,3 +7,5 @@ const MARKETPLACE_COLUMN_LATITUDE = 'latitude';
 const MARKETPLACE_COLUMN_LONGITUDE = 'longitude';
 const MARKETPLACE_COLUMN_CREATE_DATE = 'create_date';
 const MARKETPLACE_COLUMN_UPDATE_DATE = 'update_date';
+
+const MARKETPLACE_ASSET_ICON = 'lib/assets/icons/marketplace.png';

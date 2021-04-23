@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:myshoplist/modules/app/controllers/marketplace_controller.dart';
 import 'package:myshoplist/modules/app/controllers/shoplist_controller.dart';
 import 'package:myshoplist/modules/app/repositories/marketplace_repository.dart';
 import 'package:myshoplist/modules/app/repositories/product_repository.dart';
@@ -12,10 +13,12 @@ import 'package:myshoplist/modules/app/services/purchase_item_service.dart';
 import 'package:myshoplist/modules/app/services/purchase_service.dart';
 import 'package:myshoplist/modules/app/services/shoplist_item_service.dart';
 import 'package:myshoplist/modules/app/services/shoplist_service.dart';
-import 'package:myshoplist/modules/app/views/home_view.dart';
-import 'package:myshoplist/modules/app/views/shoplist_create_view.dart';
-import 'package:myshoplist/modules/app/views/shoplist_edit_view.dart';
-import 'package:myshoplist/modules/app/views/shoplist_view.dart';
+import 'package:myshoplist/modules/app/views/home/home_view.dart';
+import 'package:myshoplist/modules/app/views/marketplace/marketplace_create_view.dart';
+import 'package:myshoplist/modules/app/views/marketplace/marketplace_view.dart';
+import 'package:myshoplist/modules/app/views/marketplace/marketplace_edit_view.dart';
+import 'package:myshoplist/modules/app/views/shoplist/shoplist_edit_view.dart';
+import 'package:myshoplist/modules/app/views/shoplist/shoplist_view.dart';
 
 class AppModule extends Module {
   @override
@@ -42,16 +45,27 @@ class AppModule extends Module {
           shoplistItemService: i.get(),
           shoplistService: i.get(),
         )),
+    Bind.lazySingleton(
+        (i) => MarketplaceController(marketplaceService: i.get())),
   ];
 
   @override
   final List<ModularRoute> routes = [
+    // Home
     ChildRoute('/', child: (_, args) => HomeView()),
+    // Shoplist
     ChildRoute('/shoplists', child: (_, args) => ShoplistView()),
-    ChildRoute('/shoplists/create', child: (_, args) => ShoplistCreateView()),
     ChildRoute('/shoplists/edit',
         child: (_, args) => ShoplistEditView(
               shoplistModel: args.data,
+            )),
+    // Marketplace
+    ChildRoute('/marketplaces', child: (_, args) => MarketplaceView()),
+    ChildRoute('/marketplaces/create',
+        child: (_, args) => MarketplaceCreateView()),
+    ChildRoute('/marketplaces/edit',
+        child: (_, args) => MarketplaceEditView(
+              marketplaceModel: args.data,
             )),
   ];
 }

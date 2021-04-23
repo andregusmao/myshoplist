@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:myshoplist/constants/marketplace_constants.dart';
 
 class MarketplaceModel {
@@ -38,8 +39,13 @@ class MarketplaceModel {
     map[MARKETPLACE_COLUMN_ADDRESS] = this.address;
     map[MARKETPLACE_COLUMN_LATITUDE] = this.latitude;
     map[MARKETPLACE_COLUMN_LONGITUDE] = this.longitude;
-    map[MARKETPLACE_COLUMN_CREATE_DATE] = this.createDate;
-    map[MARKETPLACE_COLUMN_UPDATE_DATE] = this.updateDate;
+    if (this.id == null) {
+      map[MARKETPLACE_COLUMN_CREATE_DATE] =
+          DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+    } else {
+      map[MARKETPLACE_COLUMN_UPDATE_DATE] =
+          DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+    }
 
     return map;
   }

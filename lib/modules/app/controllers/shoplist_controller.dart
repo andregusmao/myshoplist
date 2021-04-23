@@ -33,17 +33,11 @@ abstract class _ShoplistControllerBase with Store {
       await this.shoplistService.getById(id);
 
   @action
-  Future<int?> save(ShoplistModel shoplistModel) async {
-    return await this.shoplistService.insert(shoplistModel);
-  }
+  Future<int?> save(ShoplistModel shoplistModel) async =>
+      shoplistModel.id == null
+          ? await this.shoplistService.insert(shoplistModel)
+          : await this.shoplistService.update(shoplistModel);
 
   @action
-  Future<int?> update(ShoplistModel shoplistModel) async {
-    await this.shoplistService.update(shoplistModel);
-  }
-
-  @action
-  Future<int?> delete(int id) async {
-    await this.shoplistService.delete(id);
-  }
+  Future<int?> delete(int id) async => await this.shoplistService.delete(id);
 }

@@ -45,13 +45,6 @@ mixin _$ShoplistController on _ShoplistControllerBase, Store {
     return _$saveAsyncAction.run(() => super.save(shoplistModel));
   }
 
-  final _$updateAsyncAction = AsyncAction('_ShoplistControllerBase.update');
-
-  @override
-  Future<int?> update(ShoplistModel shoplistModel) {
-    return _$updateAsyncAction.run(() => super.update(shoplistModel));
-  }
-
   final _$deleteAsyncAction = AsyncAction('_ShoplistControllerBase.delete');
 
   @override

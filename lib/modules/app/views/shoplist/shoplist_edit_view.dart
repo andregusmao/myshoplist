@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myshoplist/components/app/app_bar_icon_component.dart';
 import 'package:myshoplist/components/app/floating_button_component.dart';
 import 'package:myshoplist/constants/shoplist_constants.dart';
@@ -38,7 +39,7 @@ class _ShoplistEditViewState
         leadingWidth: 24,
         title: Row(
           children: [
-            AppBarIconComponent(iconPath: SHOPLIST_ASSET_ICON),
+            AppBarIconComponent(icon: SHOPLIST_ICON),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text('Editar lista'),
@@ -83,7 +84,7 @@ class _ShoplistEditViewState
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: FloatingButtonComponent(
-              icon: Icons.delete_rounded,
+              icon: FontAwesomeIcons.trash,
               key: UniqueKey(),
               onTap: () => showDialog(
                 context: context,
@@ -113,7 +114,7 @@ class _ShoplistEditViewState
           Padding(
             padding: const EdgeInsets.only(left: 8),
             child: FloatingButtonComponent(
-              icon: Icons.save_rounded,
+              icon: FontAwesomeIcons.solidSave,
               key: UniqueKey(),
               onTap: () {
                 if (_editForm.currentState!.validate()) {

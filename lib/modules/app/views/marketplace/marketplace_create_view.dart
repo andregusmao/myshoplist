@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myshoplist/components/app/app_bar_icon_component.dart';
 import 'package:myshoplist/components/app/floating_button_component.dart';
 import 'package:myshoplist/constants/marketplace_constants.dart';
@@ -32,7 +32,7 @@ class _MarketplaceCreateViewState
         leadingWidth: 24,
         title: Row(
           children: [
-            AppBarIconComponent(iconPath: MARKETPLACE_ASSET_ICON),
+            AppBarIconComponent(icon: MARKETPLACE_ICON),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text('Novo estabelecimento'),
@@ -76,7 +76,7 @@ class _MarketplaceCreateViewState
         ),
       ),
       floatingActionButton: FloatingButtonComponent(
-        icon: Icons.save_rounded,
+        icon: FontAwesomeIcons.solidSave,
         onTap: () {
           if (this._insertForm.currentState!.validate()) {
             controller.save(

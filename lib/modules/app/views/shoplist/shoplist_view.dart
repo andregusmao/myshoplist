@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myshoplist/components/app/app_bar_icon_component.dart';
 import 'package:myshoplist/components/app/floating_button_component.dart';
 import 'package:myshoplist/components/app/fullscreen_message_component.dart';
@@ -28,7 +29,7 @@ class _ShoplistViewState
         leadingWidth: 24,
         title: Row(
           children: [
-            AppBarIconComponent(iconPath: SHOPLIST_ASSET_ICON),
+            AppBarIconComponent(icon: SHOPLIST_ICON),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text('Listas de compras'),
@@ -68,7 +69,7 @@ class _ShoplistViewState
         },
       ),
       floatingActionButton: FloatingButtonComponent(
-        icon: Icons.add,
+        icon: FontAwesomeIcons.plus,
         onTap: () => showDialog(
           context: context,
           barrierDismissible: false,

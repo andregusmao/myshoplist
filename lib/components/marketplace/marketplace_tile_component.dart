@@ -24,39 +24,41 @@ class MarketplaceTileComponent extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           color: Colors.blue[100],
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image(
-                image: AssetImage(MARKETPLACE_ASSET_ICON),
-                width: 64,
-                height: 64,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(
+                  MARKETPLACE_ICON,
+                  size: 48,
+                ),
               ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Text(
-                    this.name,
-                    style: TextStyle(fontSize: 16),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Text(
+                      this.name,
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Text(
-                    this.address ?? "",
-                    style: TextStyle(fontSize: 12),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0, left: 16.0),
+                    child: Text(
+                      this.address ?? "",
+                      style: TextStyle(fontSize: 12),
+                    ),
                   ),
-                ),
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

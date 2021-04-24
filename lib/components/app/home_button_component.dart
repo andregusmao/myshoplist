@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomeButtonComponent extends StatelessWidget {
-  final AssetImage icon;
+  final IconData icon;
   final String title;
   final VoidCallback onTap;
 
@@ -16,15 +16,14 @@ class HomeButtonComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: Image(
-                image: this.icon,
-                width: 64,
-                height: 64,
+              child: Icon(
+                this.icon,
+                size: 48,
                 color: Colors.white,
               ),
             ),

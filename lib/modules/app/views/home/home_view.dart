@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myshoplist/components/app/home_button_component.dart';
 import 'package:myshoplist/components/app/message_dialog_component.dart';
+import 'package:myshoplist/constants/marketplace_constants.dart';
+import 'package:myshoplist/constants/product_constants.dart';
+import 'package:myshoplist/constants/purchase_constants.dart';
+import 'package:myshoplist/constants/shoplist_constants.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -22,22 +27,22 @@ class HomeView extends StatelessWidget {
           crossAxisCount: 3,
           children: [
             HomeButtonComponent(
-              icon: AssetImage('lib/app/assets/icons/marketplace.png'),
+              icon: MARKETPLACE_ICON,
               title: 'Estabelecimentos',
               onTap: () => Modular.to.pushNamed('/marketplaces'),
             ),
             HomeButtonComponent(
-              icon: AssetImage('lib/app/assets/icons/product.png'),
+              icon: PRODUCT_ICON,
               title: 'Produtos',
               onTap: () => Modular.to.pushNamed('/products'),
             ),
             HomeButtonComponent(
-              icon: AssetImage('lib/app/assets/icons/shoplist.png'),
+              icon: SHOPLIST_ICON,
               title: 'Listas de Compras',
               onTap: () => Modular.to.pushNamed('/shoplists'),
             ),
             HomeButtonComponent(
-              icon: AssetImage('lib/app/assets/icons/purchase.png'),
+              icon: PURCHASE_ICON,
               title: 'Compras',
               // onTap: () => Modular.to.pushNamed('/purchases'),
               onTap: () => MessageDialogComponent.showSimpleMessage(

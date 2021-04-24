@@ -35,10 +35,9 @@ class ShoplistTileComponent extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image(
-                image: AssetImage(SHOPLIST_ASSET_ICON),
-                width: 64,
-                height: 64,
+              child: Icon(
+                SHOPLIST_ICON,
+                size: 64,
               ),
             ),
             Column(

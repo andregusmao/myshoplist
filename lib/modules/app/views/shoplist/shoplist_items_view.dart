@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/components/app/fullscreen_message_component.dart';
 import 'package:myshoplist/components/shoplist/shoplist_item_tile_component.dart';
+import 'package:myshoplist/constants/product_constants.dart';
 import 'package:myshoplist/modules/app/controllers/shoplist_controller.dart';
 import 'package:myshoplist/modules/app/models/shoplist_item_model.dart';
 
@@ -31,8 +32,8 @@ class _ShoplistItemsViewState
               border: OutlineInputBorder(),
               labelText: 'código de barras',
               suffixIcon: IconButton(
-                icon: Image(
-                  image: AssetImage('lib/app/assets/icons/barcode.png'),
+                icon: Icon(
+                  PRODUCT_BARCODE_ICON,
                 ),
                 onPressed: () {
                   // Open barcode scanner

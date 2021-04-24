@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/components/app/app_bar_icon_component.dart';
 import 'package:myshoplist/components/app/fullscreen_message_component.dart';
+import 'package:myshoplist/constants/product_constants.dart';
 import 'package:myshoplist/modules/app/controllers/products_controller.dart';
 import 'package:myshoplist/modules/app/models/product_model.dart';
 
@@ -22,7 +23,7 @@ class _ProductViewState extends ModularState<ProductView, ProductsController> {
         leadingWidth: 24,
         title: Row(
           children: [
-            AppBarIconComponent(iconPath: 'lib/assets/icons/product.png'),
+            AppBarIconComponent(icon: PRODUCT_ICON),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text('Produtos'),

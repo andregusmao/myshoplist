@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/modules/app/controllers/marketplace_controller.dart';
+import 'package:myshoplist/modules/app/controllers/products_controller.dart';
 import 'package:myshoplist/modules/app/controllers/shoplist_controller.dart';
 import 'package:myshoplist/modules/app/repositories/marketplace_repository.dart';
 import 'package:myshoplist/modules/app/repositories/product_repository.dart';
@@ -17,6 +18,7 @@ import 'package:myshoplist/modules/app/views/home/home_view.dart';
 import 'package:myshoplist/modules/app/views/marketplace/marketplace_create_view.dart';
 import 'package:myshoplist/modules/app/views/marketplace/marketplace_view.dart';
 import 'package:myshoplist/modules/app/views/marketplace/marketplace_edit_view.dart';
+import 'package:myshoplist/modules/app/views/products/product_view.dart';
 import 'package:myshoplist/modules/app/views/shoplist/shoplist_edit_view.dart';
 import 'package:myshoplist/modules/app/views/shoplist/shoplist_view.dart';
 
@@ -47,6 +49,7 @@ class AppModule extends Module {
         )),
     Bind.lazySingleton(
         (i) => MarketplaceController(marketplaceService: i.get())),
+    Bind.lazySingleton((i) => ProductsController(productService: i.get())),
   ];
 
   @override
@@ -67,5 +70,7 @@ class AppModule extends Module {
         child: (_, args) => MarketplaceEditView(
               marketplaceModel: args.data,
             )),
+    // Product
+    ChildRoute('/products', child: (_, args) => ProductView()),
   ];
 }

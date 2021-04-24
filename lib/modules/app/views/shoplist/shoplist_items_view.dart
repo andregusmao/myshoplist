@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/components/fullscreen_message_component.dart';
-import 'package:myshoplist/components/shoplist_item_tile_component.dart';
+import 'package:myshoplist/components/app/fullscreen_message_component.dart';
+import 'package:myshoplist/components/shoplist/shoplist_item_tile_component.dart';
 import 'package:myshoplist/modules/app/controllers/shoplist_controller.dart';
 import 'package:myshoplist/modules/app/models/shoplist_item_model.dart';
 
@@ -50,7 +50,11 @@ class _ShoplistItemsViewState
                 padding: const EdgeInsets.only(bottom: 96),
                 itemBuilder: (context, index) => ShoplistItemTileComponent(),
               )
-            : FullscreenMessageComponent(message: 'Nenhum item cadastrado'),
+            : Padding(
+                padding: const EdgeInsets.only(top: 64),
+                child: FullscreenMessageComponent(
+                    message: 'Nenhum item cadastrado'),
+              ),
       ],
     );
   }

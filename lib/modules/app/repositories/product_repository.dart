@@ -21,11 +21,13 @@ class ProductRepository extends Disposable implements IProductRepository {
             id: products[index][PRODUCT_COLUMN_ID] as int,
             barcode: products[index][PRODUCT_COLUMN_BARCODE] as String,
             description: products[index][PRODUCT_COLUMN_DESCRIPTION] as String,
-            brand: products[index][PRODUCT_COLUMN_BRAND] as String,
+            brand: products[index][PRODUCT_COLUMN_BRAND] as String?,
             unit: products[index][PRODUCT_COLUMN_UNIT] as String,
-            weight: products[index][PRODUCT_COLUMN_WEIGHT] as double,
-            createDate: products[index][PRODUCT_COLUMN_CREATE_DATE] as DateTime,
-            updateDate: products[index][PRODUCT_COLUMN_UPDATE_DATE] as DateTime,
+            weight: products[index][PRODUCT_COLUMN_WEIGHT] as double?,
+            createDate: DateTime.tryParse(
+                products[index][PRODUCT_COLUMN_CREATE_DATE].toString()),
+            updateDate: DateTime.tryParse(
+                products[index][PRODUCT_COLUMN_UPDATE_DATE].toString()),
           );
         },
       );

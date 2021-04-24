@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+
+import 'package:intl/intl.dart';
 import 'package:myshoplist/constants/product_constants.dart';
 
 class ProductModel {
@@ -7,6 +10,7 @@ class ProductModel {
   final String? brand;
   final String unit;
   final double? weight;
+  final ByteBuffer? image;
   final DateTime? createDate;
   final DateTime? updateDate;
 
@@ -17,6 +21,7 @@ class ProductModel {
     this.brand,
     required this.unit,
     this.weight,
+    this.image,
     this.createDate,
     this.updateDate,
   });
@@ -29,6 +34,7 @@ class ProductModel {
       brand: data[PRODUCT_COLUMN_BRAND],
       unit: data[PRODUCT_COLUMN_UNIT],
       weight: data[PRODUCT_COLUMN_WEIGHT],
+      image: data[PRODUCT_COLUMN_IMAGE],
       createDate: data[PRODUCT_COLUMN_CREATE_DATE],
       updateDate: data[PRODUCT_COLUMN_UPDATE_DATE],
     );
@@ -43,8 +49,14 @@ class ProductModel {
     map[PRODUCT_COLUMN_BRAND] = this.brand;
     map[PRODUCT_COLUMN_UNIT] = this.unit;
     map[PRODUCT_COLUMN_WEIGHT] = this.weight;
-    map[PRODUCT_COLUMN_CREATE_DATE] = this.createDate;
-    map[PRODUCT_COLUMN_UPDATE_DATE] = this.updateDate;
+    map[PRODUCT_COLUMN_IMAGE] = this.image;
+    if (this.id == null) {
+      map[PRODUCT_COLUMN_CREATE_DATE] =
+          DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+    } else {
+      map[PRODUCT_COLUMN_UPDATE_DATE] =
+          DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+    }
 
     return map;
   }

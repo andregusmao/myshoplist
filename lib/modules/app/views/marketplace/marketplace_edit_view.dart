@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/components/app_bar_icon_component.dart';
-import 'package:myshoplist/components/floating_button_component.dart';
+import 'package:myshoplist/components/app/app_bar_icon_component.dart';
+import 'package:myshoplist/components/app/floating_button_component.dart';
 import 'package:myshoplist/modules/app/controllers/marketplace_controller.dart';
 import 'package:myshoplist/modules/app/models/marketplace_model.dart';
 

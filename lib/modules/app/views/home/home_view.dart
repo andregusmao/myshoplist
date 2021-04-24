@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/components/home_button_component.dart';
+import 'package:myshoplist/components/app/home_button_component.dart';
+import 'package:myshoplist/components/app/message_dialog_component.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -38,7 +39,12 @@ class HomeView extends StatelessWidget {
             HomeButtonComponent(
               icon: AssetImage('lib/app/assets/icons/purchase.png'),
               title: 'Compras',
-              onTap: () => Modular.to.pushNamed('/purchases'),
+              // onTap: () => Modular.to.pushNamed('/purchases'),
+              onTap: () => MessageDialogComponent.showSimpleMessage(
+                context,
+                'Atenção',
+                'Função não implementada',
+              ),
             ),
           ],
         ),

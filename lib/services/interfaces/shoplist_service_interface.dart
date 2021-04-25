@@ -1,4 +1,4 @@
-import 'package:myshoplist/modules/app/models/shoplist_model.dart';
+import 'package:myshoplist/models/shoplist_model.dart';
 
 abstract class IShoplistService {
   Future<List<ShoplistModel>> getAll();

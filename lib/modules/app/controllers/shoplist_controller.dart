@@ -1,7 +1,7 @@
 import 'package:mobx/mobx.dart';
-import 'package:myshoplist/modules/app/models/shoplist_model.dart';
-import 'package:myshoplist/modules/app/services/interfaces/shoplist_item_service_interface.dart';
-import 'package:myshoplist/modules/app/services/interfaces/shoplist_service_interface.dart';
+import 'package:myshoplist/models/shoplist_model.dart';
+import 'package:myshoplist/services/interfaces/shoplist_item_service_interface.dart';
+import 'package:myshoplist/services/interfaces/shoplist_service_interface.dart';
 part 'shoplist_controller.g.dart';
 
 class ShoplistController = _ShoplistControllerBase with _$ShoplistController;

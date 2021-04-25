@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:myshoplist/modules/app/models/marketplace_model.dart';
-import 'package:myshoplist/modules/app/services/interfaces/marketplace_service_interface.dart';
+import 'package:myshoplist/models/marketplace_model.dart';
+import 'package:myshoplist/services/interfaces/marketplace_service_interface.dart';
 part 'marketplace_controller.g.dart';
 
 class MarketplaceController = _MarketplaceControllerBase

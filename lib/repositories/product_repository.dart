@@ -2,8 +2,8 @@ import 'package:sqflite/sqflite.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/constants/product_constants.dart';
 import 'package:myshoplist/database/database_helper.dart';
-import 'package:myshoplist/modules/app/models/product_model.dart';
-import 'package:myshoplist/modules/app/repositories/interfaces/product_repository_interface.dart';
+import 'package:myshoplist/models/product_model.dart';
+import 'package:myshoplist/repositories/interfaces/product_repository_interface.dart';
 
 class ProductRepository extends Disposable implements IProductRepository {
   Future<Database> _database() => DatabaseHelper.instance.database;

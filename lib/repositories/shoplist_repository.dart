@@ -1,10 +1,10 @@
-import 'package:myshoplist/modules/app/repositories/shoplist_item_repository.dart';
+import 'package:myshoplist/repositories/shoplist_item_repository.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/constants/shoplist_constants.dart';
 import 'package:myshoplist/database/database_helper.dart';
-import 'package:myshoplist/modules/app/models/shoplist_model.dart';
-import 'package:myshoplist/modules/app/repositories/interfaces/shoplist_repository_interface.dart';
+import 'package:myshoplist/models/shoplist_model.dart';
+import 'package:myshoplist/repositories/interfaces/shoplist_repository_interface.dart';
 
 class ShoplistRepository extends Disposable implements IShoplistRepository {
   Future<Database> _database() => DatabaseHelper.instance.database;

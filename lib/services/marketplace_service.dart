@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/modules/app/models/marketplace_model.dart';
-import 'package:myshoplist/modules/app/repositories/interfaces/marketplace_repository_interface.dart';
-import 'package:myshoplist/modules/app/services/interfaces/marketplace_service_interface.dart';
+import 'package:myshoplist/models/marketplace_model.dart';
+import 'package:myshoplist/repositories/interfaces/marketplace_repository_interface.dart';
+import 'package:myshoplist/services/interfaces/marketplace_service_interface.dart';
 
 class MarketplaceService extends Disposable implements IMarketplaceService {
   final IMarketplaceRepository marketplaceRepository;

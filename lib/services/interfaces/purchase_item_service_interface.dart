@@ -1,4 +1,4 @@
-import 'package:myshoplist/modules/app/models/purchase_item_model.dart';
+import 'package:myshoplist/models/purchase_item_model.dart';
 
 abstract class IPurchaseItemService {
   Future<List<PurchaseItemModel>> getAll();

@@ -7,7 +7,7 @@ import 'package:myshoplist/components/app/fullscreen_message_component.dart';
 import 'package:myshoplist/components/marketplace/marketplace_tile_component.dart';
 import 'package:myshoplist/constants/marketplace_constants.dart';
 import 'package:myshoplist/modules/app/controllers/marketplace_controller.dart';
-import 'package:myshoplist/modules/app/models/marketplace_model.dart';
+import 'package:myshoplist/models/marketplace_model.dart';
 
 class MarketplaceView extends StatefulWidget {
   @override

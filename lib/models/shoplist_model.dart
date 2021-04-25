@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:myshoplist/constants/shoplist_constants.dart';
-import 'package:myshoplist/modules/app/models/shoplist_item_model.dart';
+import 'package:myshoplist/models/shoplist_item_model.dart';
 
 class ShoplistModel {
   final int? id;

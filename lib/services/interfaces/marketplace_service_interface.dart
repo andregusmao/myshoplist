@@ -1,6 +1,6 @@
-import 'package:myshoplist/modules/app/models/marketplace_model.dart';
+import 'package:myshoplist/models/marketplace_model.dart';
 
-abstract class IMarketplaceRepository {
+abstract class IMarketplaceService {
   Future<List<MarketplaceModel>> getAll();
   Future<int> getCount();
   Future<MarketplaceModel> getById(int id);

@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/modules/app/models/purchase_item_model.dart';
-import 'package:myshoplist/modules/app/repositories/interfaces/purchase_item_repository_interface.dart';
-import 'package:myshoplist/modules/app/services/interfaces/purchase_item_service_interface.dart';
+import 'package:myshoplist/models/purchase_item_model.dart';
+import 'package:myshoplist/repositories/interfaces/purchase_item_repository_interface.dart';
+import 'package:myshoplist/services/interfaces/purchase_item_service_interface.dart';
 
 class PurchaseItemService extends Disposable implements IPurchaseItemService {
   final IPurchaseItemRepository purchaseItemRepository;

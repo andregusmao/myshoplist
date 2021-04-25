@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/modules/app/models/product_model.dart';
-import 'package:myshoplist/modules/app/repositories/interfaces/product_repository_interface.dart';
-import 'package:myshoplist/modules/app/services/interfaces/product_service_interface.dart';
+import 'package:myshoplist/models/product_model.dart';
+import 'package:myshoplist/repositories/interfaces/product_repository_interface.dart';
+import 'package:myshoplist/services/interfaces/product_service_interface.dart';
 
 class ProductService extends Disposable implements IProductService {
   final IProductRepository productRepository;

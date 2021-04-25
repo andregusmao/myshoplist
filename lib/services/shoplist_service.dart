@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/modules/app/models/shoplist_model.dart';
-import 'package:myshoplist/modules/app/repositories/interfaces/shoplist_repository_interface.dart';
-import 'package:myshoplist/modules/app/services/interfaces/shoplist_service_interface.dart';
+import 'package:myshoplist/models/shoplist_model.dart';
+import 'package:myshoplist/repositories/interfaces/shoplist_repository_interface.dart';
+import 'package:myshoplist/services/interfaces/shoplist_service_interface.dart';
 
 class ShoplistService extends Disposable implements IShoplistService {
   final IShoplistRepository shoplistRepository;

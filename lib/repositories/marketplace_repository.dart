@@ -2,8 +2,8 @@ import 'package:sqflite/sqflite.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/constants/marketplace_constants.dart';
 import 'package:myshoplist/database/database_helper.dart';
-import 'package:myshoplist/modules/app/models/marketplace_model.dart';
-import 'package:myshoplist/modules/app/repositories/interfaces/marketplace_repository_interface.dart';
+import 'package:myshoplist/models/marketplace_model.dart';
+import 'package:myshoplist/repositories/interfaces/marketplace_repository_interface.dart';
 
 class MarketplaceRepository extends Disposable
     implements IMarketplaceRepository {

@@ -5,7 +5,7 @@ import 'package:myshoplist/components/app/app_bar_icon_component.dart';
 import 'package:myshoplist/components/app/floating_button_component.dart';
 import 'package:myshoplist/constants/marketplace_constants.dart';
 import 'package:myshoplist/modules/app/controllers/marketplace_controller.dart';
-import 'package:myshoplist/modules/app/models/marketplace_model.dart';
+import 'package:myshoplist/models/marketplace_model.dart';
 
 class MarketplaceEditView extends StatefulWidget {
   final MarketplaceModel marketplaceModel;

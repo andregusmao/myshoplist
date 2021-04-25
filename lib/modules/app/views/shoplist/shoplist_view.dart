@@ -7,7 +7,7 @@ import 'package:myshoplist/components/app/fullscreen_message_component.dart';
 import 'package:myshoplist/components/shoplist/shoplist_tile_component.dart';
 import 'package:myshoplist/constants/shoplist_constants.dart';
 import 'package:myshoplist/modules/app/controllers/shoplist_controller.dart';
-import 'package:myshoplist/modules/app/models/shoplist_model.dart';
+import 'package:myshoplist/models/shoplist_model.dart';
 
 class ShoplistView extends StatefulWidget {
   @override

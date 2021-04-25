@@ -1,4 +1,4 @@
-import 'package:myshoplist/modules/app/models/product_model.dart';
+import 'package:myshoplist/models/product_model.dart';
 
 abstract class IProductService {
   Future<List<ProductModel>> getAll();

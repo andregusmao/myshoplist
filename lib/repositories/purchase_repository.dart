@@ -2,8 +2,8 @@ import 'package:sqflite/sqflite.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/constants/purchase_constants.dart';
 import 'package:myshoplist/database/database_helper.dart';
-import 'package:myshoplist/modules/app/models/purchase_model.dart';
-import 'package:myshoplist/modules/app/repositories/interfaces/purchase_repository_interface.dart';
+import 'package:myshoplist/models/purchase_model.dart';
+import 'package:myshoplist/repositories/interfaces/purchase_repository_interface.dart';
 
 class PurchaseRepository extends Disposable implements IPurchaseRepository {
   Future<Database> _database() => DatabaseHelper.instance.database;

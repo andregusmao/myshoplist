@@ -1,6 +1,6 @@
-import 'package:myshoplist/modules/app/models/shoplist_item_model.dart';
+import 'package:myshoplist/models/shoplist_item_model.dart';
 
-abstract class IShoplistItemRepository {
+abstract class IShoplistItemService {
   Future<List<ShoplistItemModel>> getAll(int shoplistId);
   Future<int> getCount(int shoplistId);
   Future<ShoplistItemModel> getById(int id);

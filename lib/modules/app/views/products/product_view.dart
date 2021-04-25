@@ -4,7 +4,7 @@ import 'package:myshoplist/components/app/app_bar_icon_component.dart';
 import 'package:myshoplist/components/app/fullscreen_message_component.dart';
 import 'package:myshoplist/constants/product_constants.dart';
 import 'package:myshoplist/modules/app/controllers/products_controller.dart';
-import 'package:myshoplist/modules/app/models/product_model.dart';
+import 'package:myshoplist/models/product_model.dart';
 
 class ProductView extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
-import 'package:myshoplist/modules/app/models/purchase_model.dart';
+import 'package:myshoplist/models/purchase_model.dart';
 
-abstract class IPurchaseRepository {
+abstract class IPurchaseService {
   Future<List<PurchaseModel>> getAll();
   Future<int> getCount();
   Future<PurchaseModel> getById(int id);

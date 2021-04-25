@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:myshoplist/modules/app/models/product_model.dart';
-import 'package:myshoplist/modules/app/services/interfaces/product_service_interface.dart';
+import 'package:myshoplist/models/product_model.dart';
+import 'package:myshoplist/services/interfaces/product_service_interface.dart';
 part 'products_controller.g.dart';
 
 class ProductsController = _ProductsControllerBase with _$ProductsController;

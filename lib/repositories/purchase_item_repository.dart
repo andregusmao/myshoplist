@@ -1,5 +1,5 @@
 import 'package:myshoplist/constants/purchase_item_constants.dart';
-import 'package:myshoplist/modules/app/models/purchase_item_model.dart';
+import 'package:myshoplist/models/purchase_item_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/database/database_helper.dart';

@@ -1,3 +1,4 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:myshoplist/models/product_model.dart';
 import 'package:myshoplist/services/interfaces/product_service_interface.dart';
@@ -21,6 +22,13 @@ abstract class _ProductsControllerBase with Store {
   @action
   Future<ProductModel> load(int id) async =>
       await this.productService.getById(id);
+
+  @action
+  Future create() async => await Modular.to.pushNamed('/products/create');
+
+  @action
+  Future edit(ProductModel model) async =>
+      await Modular.to.pushNamed('/products/edit', arguments: model);
 
   @action
   Future<int?> save(ProductModel productModel) async => productModel.id == null

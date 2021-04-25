@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/components/app/app_bar_icon_component.dart';
-import 'package:myshoplist/components/app/fullscreen_message_component.dart';
 import 'package:myshoplist/constants/product_constants.dart';
 import 'package:myshoplist/models/product_model.dart';
-import 'package:myshoplist/modules/product/product_controller.dart';
+import 'package:myshoplist/controllers/product_controller.dart';
+import 'package:myshoplist/ui/components/app/app_bar_icon_component.dart';
+import 'package:myshoplist/ui/components/app/fullscreen_message_component.dart';
 
 class ProductView extends StatefulWidget {
   @override
@@ -43,11 +43,8 @@ class _ProductViewState extends ModularState<ProductView, ProductController> {
               padding: const EdgeInsets.only(bottom: 96),
               itemBuilder: (context, index) => GestureDetector(
                 child: Text(list[index].description),
-                onTap: () => Modular.to
-                    .pushNamed(
-                      '/products/edit',
-                      arguments: list[index],
-                    )
+                onTap: () => controller
+                    .edit(list[index])
                     .whenComplete(() => setState(() {})),
               ),
               key: UniqueKey(),

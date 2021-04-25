@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:myshoplist/components/app/app_bar_icon_component.dart';
-import 'package:myshoplist/components/app/floating_button_component.dart';
 import 'package:myshoplist/constants/shoplist_constants.dart';
 import 'package:myshoplist/models/shoplist_model.dart';
-import 'package:myshoplist/modules/shoplist/shoplist_controller.dart';
-import 'package:myshoplist/modules/shoplist/views/shoplist_items_view.dart';
+import 'package:myshoplist/controllers/shoplist_controller.dart';
+import 'package:myshoplist/ui/components/app/app_bar_icon_component.dart';
+import 'package:myshoplist/ui/components/app/floating_button_component.dart';
+import 'package:myshoplist/ui/views/shoplist/shoplist_items_view.dart';
 
 class ShoplistEditView extends StatefulWidget {
   final ShoplistModel shoplistModel;
@@ -34,7 +34,7 @@ class _ShoplistEditViewState
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.chevron_left),
-          onPressed: () => Modular.to.pop(),
+          onPressed: () => Modular.to.pop(context),
         ),
         leadingWidth: 24,
         title: Row(
@@ -100,9 +100,12 @@ class _ShoplistEditViewState
                       TextButton(
                         child: Text('Sim'),
                         onPressed: () {
-                          controller.delete(this.shoplistModel.id!);
-                          Navigator.of(dialogContext).pop();
-                          Modular.to.pop();
+                          controller
+                              .delete(this.shoplistModel.id!)
+                              .whenComplete(() {
+                            Navigator.of(dialogContext).pop();
+                            Modular.to.pop(context);
+                          });
                         },
                       ),
                     ],
@@ -118,11 +121,12 @@ class _ShoplistEditViewState
               key: UniqueKey(),
               onTap: () {
                 if (_editForm.currentState!.validate()) {
-                  controller.save(ShoplistModel(
-                    id: this.shoplistModel.id,
-                    name: this.nameController.text,
-                  ));
-                  Modular.to.pop();
+                  controller
+                      .save(ShoplistModel(
+                        id: this.shoplistModel.id,
+                        name: this.nameController.text,
+                      ))
+                      .whenComplete(() => Modular.to.pop(context));
                 }
               },
             ),

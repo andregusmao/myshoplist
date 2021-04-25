@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/modules/shoplist/views/shoplist_edit_view.dart';
-import 'package:myshoplist/modules/shoplist/views/shoplist_view.dart';
-import 'package:myshoplist/modules/shoplist/shoplist_controller.dart';
+import 'package:myshoplist/ui/views/shoplist/shoplist_edit_view.dart';
+import 'package:myshoplist/ui/views/shoplist/shoplist_view.dart';
+import 'package:myshoplist/controllers/shoplist_controller.dart';
 import 'package:myshoplist/repositories/shoplist_item_repository.dart';
 import 'package:myshoplist/repositories/shoplist_repository.dart';
 import 'package:myshoplist/services/shoplist_item_service.dart';

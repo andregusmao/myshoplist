@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/components/app/app_bar_icon_component.dart';
 import 'package:myshoplist/constants/purchase_constants.dart';
+import 'package:myshoplist/controllers/purchase_controller.dart';
+import 'package:myshoplist/ui/components/app/app_bar_icon_component.dart';
 
 class PurchaseView extends StatefulWidget {
   @override
   _PurchaseViewState createState() => _PurchaseViewState();
 }
 
-class _PurchaseViewState extends State<PurchaseView> {
+class _PurchaseViewState
+    extends ModularState<PurchaseView, PurchaseController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

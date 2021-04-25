@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:myshoplist/components/app/app_bar_icon_component.dart';
-import 'package:myshoplist/components/app/floating_button_component.dart';
-import 'package:myshoplist/components/app/fullscreen_message_component.dart';
-import 'package:myshoplist/components/shoplist/shoplist_tile_component.dart';
 import 'package:myshoplist/constants/shoplist_constants.dart';
 import 'package:myshoplist/models/shoplist_model.dart';
-import 'package:myshoplist/modules/shoplist/shoplist_controller.dart';
+import 'package:myshoplist/controllers/shoplist_controller.dart';
+import 'package:myshoplist/ui/components/app/app_bar_icon_component.dart';
+import 'package:myshoplist/ui/components/app/floating_button_component.dart';
+import 'package:myshoplist/ui/components/app/fullscreen_message_component.dart';
+import 'package:myshoplist/ui/components/shoplist/shoplist_tile_component.dart';
 
 class ShoplistView extends StatefulWidget {
   @override
@@ -24,7 +24,7 @@ class _ShoplistViewState
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.chevron_left),
-          onPressed: () => Modular.to.pop(),
+          onPressed: () => Modular.to.pop(context),
         ),
         leadingWidth: 24,
         title: Row(
@@ -54,11 +54,8 @@ class _ShoplistViewState
                           list[index].id!,
                         ),
                         createDate: list[index].createDate!),
-                    onTap: () => Modular.to
-                        .pushNamed(
-                          '/shoplists/edit',
-                          arguments: list[index],
-                        )
+                    onTap: () => controller
+                        .edit(list[index])
                         .whenComplete(() => setState(() {})),
                   ),
                   key: UniqueKey(),
@@ -87,7 +84,6 @@ class _ShoplistViewState
                       TextFormField(
                         controller: nameController,
                         validator: (value) {
-                          print('Value: $value');
                           if (value == null || value.isEmpty) {
                             return 'Nome é obrigatório';
                           }
@@ -111,13 +107,16 @@ class _ShoplistViewState
                   child: Text('Salvar'),
                   onPressed: () {
                     if (_insertForm.currentState!.validate()) {
-                      controller.save(
+                      controller
+                          .save(
                         ShoplistModel(
                           name: nameController.text,
                         ),
-                      );
-                      Navigator.pop(dialogContext);
-                      setState(() {});
+                      )
+                          .whenComplete(() {
+                        Navigator.pop(dialogContext);
+                        setState(() {});
+                      });
                     }
                   },
                 ),

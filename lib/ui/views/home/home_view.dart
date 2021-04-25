@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/components/app/home_button_component.dart';
 import 'package:myshoplist/constants/marketplace_constants.dart';
 import 'package:myshoplist/constants/product_constants.dart';
 import 'package:myshoplist/constants/purchase_constants.dart';
 import 'package:myshoplist/constants/shoplist_constants.dart';
-import 'package:myshoplist/modules/home/home_controller.dart';
+import 'package:myshoplist/controllers/home_controller.dart';
+import 'package:myshoplist/ui/components/app/home_button_component.dart';
 
 class HomeView extends StatefulWidget {
   @override

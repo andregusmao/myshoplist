@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/modules/product/product_controller.dart';
-import 'package:myshoplist/modules/product/views/product_view.dart';
+import 'package:myshoplist/controllers/product_controller.dart';
+import 'package:myshoplist/ui/views/product/product_view.dart';
 import 'package:myshoplist/repositories/product_repository.dart';
 import 'package:myshoplist/services/product_service.dart';
 

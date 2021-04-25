@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:myshoplist/components/app/app_bar_icon_component.dart';
-import 'package:myshoplist/components/app/floating_button_component.dart';
 import 'package:myshoplist/constants/marketplace_constants.dart';
-import 'package:myshoplist/modules/marketplace/marketplace_controller.dart';
 import 'package:myshoplist/models/marketplace_model.dart';
+import 'package:myshoplist/controllers/marketplace_controller.dart';
+import 'package:myshoplist/ui/components/app/app_bar_icon_component.dart';
+import 'package:myshoplist/ui/components/app/floating_button_component.dart';
 
 class MarketplaceCreateView extends StatefulWidget {
   @override

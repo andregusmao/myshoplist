@@ -1,8 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/modules/marketplace/marketplace_controller.dart';
-import 'package:myshoplist/modules/marketplace/views/marketplace_create_view.dart';
-import 'package:myshoplist/modules/marketplace/views/marketplace_edit_view.dart';
-import 'package:myshoplist/modules/marketplace/views/marketplace_view.dart';
+import 'package:myshoplist/controllers/marketplace_controller.dart';
+import 'package:myshoplist/ui/views/marketplace/marketplace_create_view.dart';
+import 'package:myshoplist/ui/views/marketplace/marketplace_edit_view.dart';
+import 'package:myshoplist/ui/views/marketplace/marketplace_view.dart';
 import 'package:myshoplist/repositories/marketplace_repository.dart';
 import 'package:myshoplist/services/marketplace_service.dart';
 

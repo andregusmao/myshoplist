@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:myshoplist/components/app/app_bar_icon_component.dart';
-import 'package:myshoplist/components/app/floating_button_component.dart';
 import 'package:myshoplist/constants/marketplace_constants.dart';
-import 'package:myshoplist/modules/marketplace/marketplace_controller.dart';
 import 'package:myshoplist/models/marketplace_model.dart';
+import 'package:myshoplist/controllers/marketplace_controller.dart';
+import 'package:myshoplist/ui/components/app/app_bar_icon_component.dart';
+import 'package:myshoplist/ui/components/app/floating_button_component.dart';
 
 class MarketplaceEditView extends StatefulWidget {
   final MarketplaceModel marketplaceModel;
@@ -36,7 +36,7 @@ class _MarketplaceEditViewState
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.chevron_left),
-          onPressed: () => Modular.to.pop(),
+          onPressed: () => Modular.to.pop(context),
         ),
         leadingWidth: 24,
         title: Row(
@@ -109,7 +109,7 @@ class _MarketplaceEditViewState
                         onPressed: () {
                           controller.delete(this.marketplaceModel.id!);
                           Navigator.of(dialogContext).pop();
-                          Modular.to.pop();
+                          Modular.to.pop(context);
                         },
                       ),
                     ],
@@ -131,7 +131,7 @@ class _MarketplaceEditViewState
                       address: this.addressController.text,
                     ),
                   );
-                  Modular.to.pop();
+                  Modular.to.pop(context);
                 }
               },
             ),

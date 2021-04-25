@@ -1,10 +1,10 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/modules/home/home_controller.dart';
-import 'package:myshoplist/modules/home/views/home_view.dart';
-import 'package:myshoplist/modules/marketplace/marketplace_module.dart';
-import 'package:myshoplist/modules/product/product_module.dart';
-import 'package:myshoplist/modules/purchase/purchase_module.dart';
-import 'package:myshoplist/modules/shoplist/shoplist_module.dart';
+import 'package:myshoplist/controllers/home_controller.dart';
+import 'package:myshoplist/ui/views/home/home_view.dart';
+import 'package:myshoplist/modules/marketplace_module.dart';
+import 'package:myshoplist/modules/product_module.dart';
+import 'package:myshoplist/modules/purchase_module.dart';
+import 'package:myshoplist/modules/shoplist_module.dart';
 
 class HomeModule extends Module {
   List<Bind> get binds => [

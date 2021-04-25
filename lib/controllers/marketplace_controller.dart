@@ -1,3 +1,4 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:myshoplist/models/marketplace_model.dart';
 import 'package:myshoplist/services/interfaces/marketplace_service_interface.dart';
@@ -23,6 +24,15 @@ abstract class _MarketplaceControllerBase with Store {
   @action
   Future<MarketplaceModel> load(int id) async =>
       await this.marketplaceService.getById(id);
+
+  @action
+  Future create() async => await Modular.to.pushNamed('/marketplaces/create');
+
+  @action
+  Future edit(MarketplaceModel model) async => await Modular.to.pushNamed(
+        '/marketplaces/edit',
+        arguments: model,
+      );
 
   @action
   Future<int?> save(MarketplaceModel marketplaceModel) async =>

@@ -1,3 +1,4 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:myshoplist/models/shoplist_model.dart';
 import 'package:myshoplist/services/interfaces/shoplist_item_service_interface.dart';
@@ -31,6 +32,10 @@ abstract class _ShoplistControllerBase with Store {
   @action
   Future<ShoplistModel> load(int id) async =>
       await this.shoplistService.getById(id);
+
+  @action
+  Future edit(ShoplistModel model) async =>
+      await Modular.to.pushNamed('/shoplists/edit', arguments: model);
 
   @action
   Future<int?> save(ShoplistModel shoplistModel) async =>

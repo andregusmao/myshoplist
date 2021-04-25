@@ -18,7 +18,6 @@ class MarketplaceRepository extends Disposable
       return List.generate(
         marketplaces.length,
         (index) {
-          var x = 1;
           MarketplaceModel model = MarketplaceModel(
             id: marketplaces[index][MARKETPLACE_COLUMN_ID] as int,
             name: marketplaces[index][MARKETPLACE_COLUMN_NAME] as String,

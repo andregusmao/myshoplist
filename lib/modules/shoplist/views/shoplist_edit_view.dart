@@ -4,9 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myshoplist/components/app/app_bar_icon_component.dart';
 import 'package:myshoplist/components/app/floating_button_component.dart';
 import 'package:myshoplist/constants/shoplist_constants.dart';
-import 'package:myshoplist/modules/app/controllers/shoplist_controller.dart';
 import 'package:myshoplist/models/shoplist_model.dart';
-import 'package:myshoplist/modules/app/views/shoplist/shoplist_items_view.dart';
+import 'package:myshoplist/modules/shoplist/shoplist_controller.dart';
+import 'package:myshoplist/modules/shoplist/views/shoplist_items_view.dart';
 
 class ShoplistEditView extends StatefulWidget {
   final ShoplistModel shoplistModel;

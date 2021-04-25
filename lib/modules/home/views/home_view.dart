@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myshoplist/components/app/home_button_component.dart';
 import 'package:myshoplist/components/app/message_dialog_component.dart';
 import 'package:myshoplist/constants/marketplace_constants.dart';
 import 'package:myshoplist/constants/product_constants.dart';
 import 'package:myshoplist/constants/purchase_constants.dart';
 import 'package:myshoplist/constants/shoplist_constants.dart';
+import 'package:myshoplist/modules/home/home_controller.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
+  @override
+  _HomeViewState createState() => _HomeViewState();
+}
+
+class _HomeViewState extends ModularState<HomeView, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,29 +32,24 @@ class HomeView extends StatelessWidget {
           crossAxisCount: 3,
           children: [
             HomeButtonComponent(
-              icon: MARKETPLACE_ICON,
-              title: 'Estabelecimentos',
-              onTap: () => Modular.to.pushNamed('/marketplaces'),
-            ),
+                icon: MARKETPLACE_ICON,
+                title: 'Estabelecimentos',
+                onTap: () => controller.navigateToMarketplaces()),
             HomeButtonComponent(
               icon: PRODUCT_ICON,
               title: 'Produtos',
-              onTap: () => Modular.to.pushNamed('/products'),
+              onTap: () => controller.navigateToProducts(),
             ),
             HomeButtonComponent(
               icon: SHOPLIST_ICON,
               title: 'Listas de Compras',
-              onTap: () => Modular.to.pushNamed('/shoplists'),
+              onTap: () => controller.navigateToShoplists(),
             ),
             HomeButtonComponent(
               icon: PURCHASE_ICON,
               title: 'Compras',
               // onTap: () => Modular.to.pushNamed('/purchases'),
-              onTap: () => MessageDialogComponent.showSimpleMessage(
-                context,
-                'Atenção',
-                'Função não implementada',
-              ),
+              onTap: () => controller.navigateToPurchases(),
             ),
           ],
         ),

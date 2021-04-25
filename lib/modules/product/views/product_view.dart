@@ -3,15 +3,15 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/components/app/app_bar_icon_component.dart';
 import 'package:myshoplist/components/app/fullscreen_message_component.dart';
 import 'package:myshoplist/constants/product_constants.dart';
-import 'package:myshoplist/modules/app/controllers/products_controller.dart';
 import 'package:myshoplist/models/product_model.dart';
+import 'package:myshoplist/modules/product/product_controller.dart';
 
 class ProductView extends StatefulWidget {
   @override
   _ProductViewState createState() => _ProductViewState();
 }
 
-class _ProductViewState extends ModularState<ProductView, ProductsController> {
+class _ProductViewState extends ModularState<ProductView, ProductController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

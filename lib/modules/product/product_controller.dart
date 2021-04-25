@@ -1,9 +1,9 @@
 import 'package:mobx/mobx.dart';
 import 'package:myshoplist/models/product_model.dart';
 import 'package:myshoplist/services/interfaces/product_service_interface.dart';
-part 'products_controller.g.dart';
+part 'product_controller.g.dart';
 
-class ProductsController = _ProductsControllerBase with _$ProductsController;
+class ProductController = _ProductsControllerBase with _$ProductController;
 
 abstract class _ProductsControllerBase with Store {
   final IProductService productService;

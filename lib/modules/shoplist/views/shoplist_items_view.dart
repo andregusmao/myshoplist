@@ -4,8 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/components/app/fullscreen_message_component.dart';
 import 'package:myshoplist/components/shoplist/shoplist_item_tile_component.dart';
 import 'package:myshoplist/constants/product_constants.dart';
-import 'package:myshoplist/modules/app/controllers/shoplist_controller.dart';
 import 'package:myshoplist/models/shoplist_item_model.dart';
+import 'package:myshoplist/modules/shoplist/shoplist_controller.dart';
 
 class ShoplistItemsView extends StatefulWidget {
   final List<ShoplistItemModel> shoplistItemModel;

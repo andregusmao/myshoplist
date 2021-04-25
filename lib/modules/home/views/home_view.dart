@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/components/app/home_button_component.dart';
-import 'package:myshoplist/components/app/message_dialog_component.dart';
 import 'package:myshoplist/constants/marketplace_constants.dart';
 import 'package:myshoplist/constants/product_constants.dart';
 import 'package:myshoplist/constants/purchase_constants.dart';

@@ -1,5 +1,7 @@
 import 'package:myshoplist/constants/purchase_item_constants.dart';
 import 'package:myshoplist/models/purchase_item_model.dart';
+import 'package:myshoplist/repositories/product_repository.dart';
+import 'package:myshoplist/repositories/purchase_repository.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/database/database_helper.dart';
@@ -10,30 +12,31 @@ class PurchaseItemRepository extends Disposable
   Future<Database> _database() => DatabaseHelper.instance.database;
 
   @override
-  Future<List<PurchaseItemModel>> getAll() async {
+  Future<List<PurchaseItemModel>> getAll(int purchaseId) async {
     final Database db = await _database();
     try {
-      final purchaseItems = await db.query(PURCHASE_ITEM_TABLE);
-      return List.generate(
-        purchaseItems.length,
-        (index) {
-          return PurchaseItemModel(
-            id: purchaseItems[index][PURCHASE_ITEM_COLUMN_ID] as int,
-            purchaseId:
-                purchaseItems[index][PURCHASE_ITEM_COLUMN_PURCHASE_ID] as int,
-            productId:
-                purchaseItems[index][PURCHASE_ITEM_COLUMN_PRODUCT_ID] as int,
-            quantity:
-                purchaseItems[index][PURCHASE_ITEM_COLUMN_QUANTITY] as double,
-            unitPrice:
-                purchaseItems[index][PURCHASE_ITEM_COLUMN_UNIT_PRICE] as double,
-            createDate: purchaseItems[index][PURCHASE_ITEM_COLUMN_CREATE_DATE]
-                as DateTime,
-            updateDate: purchaseItems[index][PURCHASE_ITEM_COLUMN_UPDATE_DATE]
-                as DateTime,
-          );
-        },
-      );
+      final purchaseItems = await db.query(PURCHASE_ITEM_TABLE,
+          where: '$PURCHASE_ITEM_COLUMN_PURCHASE_ID = ?',
+          whereArgs: [purchaseId]);
+      List<PurchaseItemModel> list = [];
+      for (Map<String, Object?> purchaseItem in purchaseItems) {
+        list.add(PurchaseItemModel(
+          id: purchaseItem[PURCHASE_ITEM_COLUMN_ID] as int,
+          purchaseId: purchaseItem[PURCHASE_ITEM_COLUMN_PURCHASE_ID] as int,
+          productId: purchaseItem[PURCHASE_ITEM_COLUMN_PRODUCT_ID] as int,
+          quantity: purchaseItem[PURCHASE_ITEM_COLUMN_QUANTITY] as double,
+          unitPrice: purchaseItem[PURCHASE_ITEM_COLUMN_UNIT_PRICE] as double,
+          createdAt: DateTime.parse(
+              purchaseItem[PURCHASE_ITEM_COLUMN_CREATE_DATE].toString()),
+          updatedAt: DateTime.tryParse(
+              purchaseItem[PURCHASE_ITEM_COLUMN_UPDATE_DATE].toString()),
+          purchase: await PurchaseRepository()
+              .getById(purchaseItem[PURCHASE_ITEM_COLUMN_PURCHASE_ID] as int),
+          product: await ProductRepository()
+              .getById(purchaseItem[PURCHASE_ITEM_COLUMN_PRODUCT_ID] as int),
+        ));
+      }
+      return list;
     } catch (error) {
       print(error);
     }

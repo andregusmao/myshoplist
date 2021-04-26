@@ -7,8 +7,8 @@ class MarketplaceModel {
   final String? address;
   final String? latitude;
   final String? longitude;
-  final DateTime? createDate;
-  final DateTime? updateDate;
+  final DateTime createdAt;
+  final DateTime? updatedAt;
 
   MarketplaceModel({
     this.id,
@@ -16,8 +16,8 @@ class MarketplaceModel {
     this.address,
     this.latitude,
     this.longitude,
-    this.createDate,
-    this.updateDate,
+    required this.createdAt,
+    this.updatedAt,
   });
 
   static MarketplaceModel readData(Map<String, dynamic> data) {
@@ -27,8 +27,8 @@ class MarketplaceModel {
       address: data[MARKETPLACE_COLUMN_ADDRESS],
       latitude: data[MARKETPLACE_COLUMN_LATITUDE],
       longitude: data[MARKETPLACE_COLUMN_LONGITUDE],
-      createDate: data[MARKETPLACE_COLUMN_CREATE_DATE],
-      updateDate: data[MARKETPLACE_COLUMN_UPDATE_DATE],
+      createdAt: data[MARKETPLACE_COLUMN_CREATE_DATE],
+      updatedAt: data[MARKETPLACE_COLUMN_UPDATE_DATE],
     );
   }
 

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myshoplist/constants/product_constants.dart';
 import 'package:myshoplist/models/product_model.dart';
 import 'package:myshoplist/controllers/product_controller.dart';
 import 'package:myshoplist/ui/components/app/app_bar_icon_component.dart';
+import 'package:myshoplist/ui/components/app/floating_button_component.dart';
 import 'package:myshoplist/ui/components/app/fullscreen_message_component.dart';
 
 class ProductView extends StatefulWidget {
@@ -18,7 +20,8 @@ class _ProductViewState extends ModularState<ProductView, ProductController> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.chevron_left),
-          onPressed: () => Modular.to.pop(),
+          // onPressed: () => Modular.to.pop(context),
+          onPressed: () => Navigator.of(context).pop(),
         ),
         leadingWidth: 24,
         title: Row(
@@ -55,6 +58,10 @@ class _ProductViewState extends ModularState<ProductView, ProductController> {
             );
           }
         },
+      ),
+      floatingActionButton: FloatingButtonComponent(
+        icon: FontAwesomeIcons.plus,
+        onTap: () => controller.create(),
       ),
     );
   }

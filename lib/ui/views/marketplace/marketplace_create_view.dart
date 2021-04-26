@@ -82,6 +82,7 @@ class _MarketplaceCreateViewState
               MarketplaceModel(
                 name: this.nameController.text,
                 address: this.addressController.text,
+                createdAt: DateTime.now(),
               ),
             );
             Modular.to.pop(context);

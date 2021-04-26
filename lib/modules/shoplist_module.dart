@@ -20,7 +20,7 @@ class ShoplistModule extends Module {
         )),
   ];
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => ShoplistView()),
+    ChildRoute('/', child: (_, __) => ShoplistView()),
     ChildRoute('/edit',
         child: (_, args) => ShoplistEditView(
               shoplistModel: args.data,

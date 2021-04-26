@@ -1,4 +1,7 @@
 import 'package:myshoplist/constants/purchase_constants.dart';
+import 'package:myshoplist/models/marketplace_model.dart';
+import 'package:myshoplist/models/purchase_item_model.dart';
+import 'package:myshoplist/models/shoplist_model.dart';
 
 class PurchaseModel {
   final int? id;
@@ -6,17 +9,24 @@ class PurchaseModel {
   final int marketplaceId;
   final DateTime? startDate;
   final DateTime? finishDate;
-  final DateTime? createDate;
-  final DateTime? updateDate;
+  final DateTime createdAt;
+  final DateTime? updatedAt;
+  final List<PurchaseItemModel> items;
+  final ShoplistModel shoplist;
+  final MarketplaceModel marketplace;
 
-  PurchaseModel(
-      {this.id,
-      required this.shoplistId,
-      required this.marketplaceId,
-      this.startDate,
-      this.finishDate,
-      this.createDate,
-      required this.updateDate});
+  PurchaseModel({
+    this.id,
+    required this.shoplistId,
+    required this.marketplaceId,
+    this.startDate,
+    this.finishDate,
+    required this.createdAt,
+    this.updatedAt,
+    required this.items,
+    required this.shoplist,
+    required this.marketplace,
+  });
 
   static PurchaseModel fromMap(Map<String, dynamic> data) {
     return PurchaseModel(
@@ -25,8 +35,11 @@ class PurchaseModel {
       marketplaceId: data[PURCHASE_COLUMN_MARKETPLACE_ID],
       startDate: data[PURCHASE_COLUMN_START_DATE],
       finishDate: data[PURCHASE_COLUMN_FINISH_DATE],
-      createDate: data[PURCHASE_COLUMN_CREATE_DATE],
-      updateDate: data[PURCHASE_COLUMN_UPDATE_DATE],
+      createdAt: data[PURCHASE_COLUMN_CREATE_DATE],
+      updatedAt: data[PURCHASE_COLUMN_UPDATE_DATE],
+      items: data['items'],
+      shoplist: data['shoplist'],
+      marketplace: data['marketplace'],
     );
   }
 

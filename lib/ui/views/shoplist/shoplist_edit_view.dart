@@ -125,6 +125,7 @@ class _ShoplistEditViewState
                       .save(ShoplistModel(
                         id: this.shoplistModel.id,
                         name: this.nameController.text,
+                        createdAt: this.shoplistModel.createdAt,
                       ))
                       .whenComplete(() => Modular.to.pop(context));
                 }

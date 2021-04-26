@@ -11,8 +11,8 @@ class ProductModel {
   final String unit;
   final double? weight;
   final ByteBuffer? image;
-  final DateTime? createDate;
-  final DateTime? updateDate;
+  final DateTime createdAt;
+  final DateTime? updatedAt;
 
   ProductModel({
     this.id,
@@ -22,8 +22,8 @@ class ProductModel {
     required this.unit,
     this.weight,
     this.image,
-    this.createDate,
-    this.updateDate,
+    required this.createdAt,
+    this.updatedAt,
   });
 
   static ProductModel fromMap(Map<String, dynamic> data) {
@@ -35,8 +35,8 @@ class ProductModel {
       unit: data[PRODUCT_COLUMN_UNIT],
       weight: data[PRODUCT_COLUMN_WEIGHT],
       image: data[PRODUCT_COLUMN_IMAGE],
-      createDate: data[PRODUCT_COLUMN_CREATE_DATE],
-      updateDate: data[PRODUCT_COLUMN_UPDATE_DATE],
+      createdAt: data[PRODUCT_COLUMN_CREATE_DATE],
+      updatedAt: data[PRODUCT_COLUMN_UPDATE_DATE],
     );
   }
 

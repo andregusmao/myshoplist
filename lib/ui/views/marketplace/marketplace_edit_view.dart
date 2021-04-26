@@ -129,6 +129,7 @@ class _MarketplaceEditViewState
                       id: this.marketplaceModel.id,
                       name: this.nameController.text,
                       address: this.addressController.text,
+                      createdAt: this.marketplaceModel.createdAt,
                     ),
                   );
                   Modular.to.pop(context);

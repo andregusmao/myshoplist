@@ -1,4 +1,6 @@
 import 'package:myshoplist/constants/purchase_item_constants.dart';
+import 'package:myshoplist/models/product_model.dart';
+import 'package:myshoplist/models/purchase_model.dart';
 
 class PurchaseItemModel {
   final int? id;
@@ -6,8 +8,10 @@ class PurchaseItemModel {
   final int productId;
   final double quantity;
   final double unitPrice;
-  final DateTime? createDate;
-  final DateTime? updateDate;
+  final DateTime createdAt;
+  final DateTime? updatedAt;
+  final PurchaseModel purchase;
+  final ProductModel product;
 
   PurchaseItemModel({
     this.id,
@@ -15,8 +19,10 @@ class PurchaseItemModel {
     required this.productId,
     required this.quantity,
     required this.unitPrice,
-    this.createDate,
-    this.updateDate,
+    required this.createdAt,
+    this.updatedAt,
+    required this.purchase,
+    required this.product,
   });
 
   static PurchaseItemModel fromMap(Map<String, dynamic> data) {
@@ -26,8 +32,10 @@ class PurchaseItemModel {
       productId: data[PURCHASE_ITEM_COLUMN_PRODUCT_ID],
       quantity: data[PURCHASE_ITEM_COLUMN_QUANTITY],
       unitPrice: data[PURCHASE_ITEM_COLUMN_UNIT_PRICE],
-      createDate: data[PURCHASE_ITEM_COLUMN_CREATE_DATE],
-      updateDate: data[PURCHASE_ITEM_COLUMN_UPDATE_DATE],
+      createdAt: data[PURCHASE_ITEM_COLUMN_CREATE_DATE],
+      updatedAt: data[PURCHASE_ITEM_COLUMN_UPDATE_DATE],
+      purchase: data['purchase'],
+      product: data['product'],
     );
   }
 
@@ -39,8 +47,8 @@ class PurchaseItemModel {
     map[PURCHASE_ITEM_COLUMN_PRODUCT_ID] = this.productId;
     map[PURCHASE_ITEM_COLUMN_QUANTITY] = this.quantity;
     map[PURCHASE_ITEM_COLUMN_UNIT_PRICE] = this.unitPrice;
-    map[PURCHASE_ITEM_COLUMN_CREATE_DATE] = this.createDate;
-    map[PURCHASE_ITEM_COLUMN_UPDATE_DATE] = this.updateDate;
+    map[PURCHASE_ITEM_COLUMN_CREATE_DATE] = this.createdAt;
+    map[PURCHASE_ITEM_COLUMN_UPDATE_DATE] = this.updatedAt;
 
     return map;
   }

@@ -15,8 +15,8 @@ class MarketplaceModule extends Module {
         (i) => MarketplaceController(marketplaceService: i.get())),
   ];
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => MarketplaceView()),
-    ChildRoute('/create', child: (_, args) => MarketplaceCreateView()),
+    ChildRoute('/', child: (_, __) => MarketplaceView()),
+    ChildRoute('/create', child: (_, __) => MarketplaceCreateView()),
     ChildRoute('/edit',
         child: (_, args) => MarketplaceEditView(
               marketplaceModel: args.data,

@@ -1,3 +1,6 @@
+import 'package:myshoplist/repositories/marketplace_repository.dart';
+import 'package:myshoplist/repositories/purchase_item_repository.dart';
+import 'package:myshoplist/repositories/shoplist_repository.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/constants/purchase_constants.dart';
@@ -13,24 +16,27 @@ class PurchaseRepository extends Disposable implements IPurchaseRepository {
     final Database db = await _database();
     try {
       final purchases = await db.query(PURCHASE_TABLE);
-      return List.generate(
-        purchases.length,
-        (index) {
-          return PurchaseModel(
-              id: purchases[index][PURCHASE_COLUMN_ID] as int,
-              shoplistId: purchases[index][PURCHASE_COLUMN_SHOPLIST_ID] as int,
-              marketplaceId:
-                  purchases[index][PURCHASE_COLUMN_MARKETPLACE_ID] as int,
-              startDate:
-                  purchases[index][PURCHASE_COLUMN_START_DATE] as DateTime?,
-              finishDate:
-                  purchases[index][PURCHASE_COLUMN_FINISH_DATE] as DateTime?,
-              createDate:
-                  purchases[index][PURCHASE_COLUMN_CREATE_DATE] as DateTime?,
-              updateDate:
-                  purchases[index][PURCHASE_COLUMN_UPDATE_DATE] as DateTime?);
-        },
-      );
+      List<PurchaseModel> list = [];
+      for (Map<String, Object?> purchase in purchases) {
+        list.add(PurchaseModel(
+            id: purchase[PURCHASE_COLUMN_ID] as int,
+            shoplistId: purchase[PURCHASE_COLUMN_SHOPLIST_ID] as int,
+            marketplaceId: purchase[PURCHASE_COLUMN_MARKETPLACE_ID] as int,
+            startDate: DateTime.tryParse(
+                purchase[PURCHASE_COLUMN_START_DATE].toString()),
+            finishDate: DateTime.tryParse(
+                purchase[PURCHASE_COLUMN_FINISH_DATE].toString()),
+            createdAt: DateTime.parse(
+                purchase[PURCHASE_COLUMN_CREATE_DATE].toString()),
+            updatedAt: DateTime.tryParse(
+                purchase[PURCHASE_COLUMN_UPDATE_DATE].toString()),
+            items: [],
+            shoplist: await ShoplistRepository()
+                .getById(purchase[PURCHASE_COLUMN_SHOPLIST_ID] as int),
+            marketplace: await MarketplaceRepository()
+                .getById(purchase[PURCHASE_COLUMN_MARKETPLACE_ID] as int)));
+      }
+      return list;
     } catch (error) {
       print(error);
     }
@@ -54,8 +60,10 @@ class PurchaseRepository extends Disposable implements IPurchaseRepository {
         ],
         where: '$PURCHASE_COLUMN_ID = ?',
         whereArgs: [id],
+        limit: 1,
       );
       if (purchase.isNotEmpty) {
+        purchase.first['item'] = await PurchaseItemRepository().getAll(id);
         return PurchaseModel.fromMap(purchase.first);
       }
     } catch (error) {

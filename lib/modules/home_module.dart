@@ -12,7 +12,7 @@ class HomeModule extends Module {
       ];
 
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => HomeView()),
+    ChildRoute('/', child: (_, __) => HomeView()),
     ModuleRoute('/marketplaces', module: MarketplaceModule()),
     ModuleRoute('/products', module: ProductModule()),
     ModuleRoute('/shoplists', module: ShoplistModule()),

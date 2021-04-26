@@ -1,3 +1,5 @@
+import 'package:myshoplist/repositories/product_repository.dart';
+import 'package:myshoplist/repositories/shoplist_repository.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:myshoplist/constants/shoplist_item_constants.dart';
@@ -18,24 +20,24 @@ class ShopListItemRepository extends Disposable
         where: '$SHOPLIST_ITEM_COLUMN_SHOPLIST_ID = ?',
         whereArgs: [shoplistId],
       );
-      return List.generate(
-        shoplistItems.length,
-        (index) {
-          return ShoplistItemModel(
-            id: shoplistItems[index][SHOPLIST_ITEM_COLUMN_ID] as int,
-            shoplistId:
-                shoplistItems[index][SHOPLIST_ITEM_COLUMN_SHOPLIST_ID] as int,
-            productId:
-                shoplistItems[index][SHOPLIST_ITEM_COLUMN_PRODUCT_ID] as int,
-            quantity:
-                shoplistItems[index][SHOPLIST_ITEM_COLUMN_QUANTITY] as double,
-            createDate: shoplistItems[index][SHOPLIST_ITEM_COLUMN_CREATE_DATE]
-                as DateTime,
-            updateDate: shoplistItems[index][SHOPLIST_ITEM_COLUMN_UPDATE_DATE]
-                as DateTime,
-          );
-        },
-      );
+      List<ShoplistItemModel> list = [];
+      for (Map<String, Object?> shoplistItem in shoplistItems) {
+        list.add(ShoplistItemModel(
+          id: shoplistItem[SHOPLIST_ITEM_COLUMN_ID] as int,
+          shoplistId: shoplistItem[SHOPLIST_ITEM_COLUMN_SHOPLIST_ID] as int,
+          productId: shoplistItem[SHOPLIST_ITEM_COLUMN_PRODUCT_ID] as int,
+          quantity: shoplistItem[SHOPLIST_ITEM_COLUMN_QUANTITY] as double,
+          createdAt: DateTime.parse(
+              shoplistItem[SHOPLIST_ITEM_COLUMN_CREATE_DATE].toString()),
+          updatedAt: DateTime.tryParse(
+              shoplistItem[SHOPLIST_ITEM_COLUMN_UPDATE_DATE].toString()),
+          shoplist: await ShoplistRepository()
+              .getById(shoplistItem[SHOPLIST_ITEM_COLUMN_SHOPLIST_ID] as int),
+          product: await ProductRepository()
+              .getById(shoplistItem[SHOPLIST_ITEM_COLUMN_PRODUCT_ID] as int),
+        ));
+      }
+      return list;
     } catch (error) {
       print(error);
     }

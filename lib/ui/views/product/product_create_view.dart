@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:myshoplist/constants/purchase_constants.dart';
-import 'package:myshoplist/controllers/purchase_controller.dart';
+import 'package:myshoplist/constants/product_constants.dart';
 import 'package:myshoplist/ui/components/app/app_bar_icon_component.dart';
 
-class PurchaseView extends StatefulWidget {
+class ProductCreateView extends StatefulWidget {
   @override
-  _PurchaseViewState createState() => _PurchaseViewState();
+  _ProductCreateViewState createState() => _ProductCreateViewState();
 }
 
-class _PurchaseViewState
-    extends ModularState<PurchaseView, PurchaseController> {
+class _ProductCreateViewState extends State<ProductCreateView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,10 +20,10 @@ class _PurchaseViewState
         leadingWidth: 24,
         title: Row(
           children: [
-            AppBarIconComponent(icon: PURCHASE_ICON),
+            AppBarIconComponent(icon: PRODUCT_ICON),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('Compras'),
+              child: Text('Novo produto'),
             ),
           ],
         ),

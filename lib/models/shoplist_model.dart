@@ -5,15 +5,15 @@ import 'package:myshoplist/models/shoplist_item_model.dart';
 class ShoplistModel {
   final int? id;
   final String name;
-  final DateTime? createDate;
-  final DateTime? updateDate;
+  final DateTime createdAt;
+  final DateTime? updatedAt;
   final List<ShoplistItemModel>? items;
 
   ShoplistModel({
     this.id,
     required this.name,
-    this.createDate,
-    this.updateDate,
+    required this.createdAt,
+    this.updatedAt,
     this.items,
   });
 
@@ -21,8 +21,8 @@ class ShoplistModel {
     return ShoplistModel(
         id: data[SHOPLIST_COLUMN_ID],
         name: data[SHOPLIST_COLUMN_NAME],
-        createDate: data[SHOPLIST_COLUMN_CREATE_DATE],
-        updateDate: data[SHOPLIST_COLUMN_UPDATE_DATE],
+        createdAt: data[SHOPLIST_COLUMN_CREATE_DATE],
+        updatedAt: data[SHOPLIST_COLUMN_UPDATE_DATE],
         items: data['items']);
   }
 

@@ -26,9 +26,9 @@ class MarketplaceRepository extends Disposable
                 marketplaces[index][MARKETPLACE_COLUMN_LATITUDE] as String?,
             longitude:
                 marketplaces[index][MARKETPLACE_COLUMN_LONGITUDE] as String?,
-            createDate: DateTime.tryParse(
+            createdAt: DateTime.parse(
                 marketplaces[index][MARKETPLACE_COLUMN_CREATE_DATE].toString()),
-            updateDate: DateTime.tryParse(
+            updatedAt: DateTime.tryParse(
                 marketplaces[index][MARKETPLACE_COLUMN_UPDATE_DATE].toString()),
           );
           return model;

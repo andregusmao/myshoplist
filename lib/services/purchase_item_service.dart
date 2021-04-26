@@ -9,8 +9,8 @@ class PurchaseItemService extends Disposable implements IPurchaseItemService {
   PurchaseItemService({required this.purchaseItemRepository});
 
   @override
-  Future<List<PurchaseItemModel>> getAll() async =>
-      await this.purchaseItemRepository.getAll();
+  Future<List<PurchaseItemModel>> getAll(int id) async =>
+      await this.purchaseItemRepository.getAll(id);
 
   @override
   Future<PurchaseItemModel> getById(int id) async =>

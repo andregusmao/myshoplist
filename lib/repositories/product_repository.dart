@@ -24,9 +24,9 @@ class ProductRepository extends Disposable implements IProductRepository {
             brand: products[index][PRODUCT_COLUMN_BRAND] as String?,
             unit: products[index][PRODUCT_COLUMN_UNIT] as String,
             weight: products[index][PRODUCT_COLUMN_WEIGHT] as double?,
-            createDate: DateTime.tryParse(
+            createdAt: DateTime.parse(
                 products[index][PRODUCT_COLUMN_CREATE_DATE].toString()),
-            updateDate: DateTime.tryParse(
+            updatedAt: DateTime.tryParse(
                 products[index][PRODUCT_COLUMN_UPDATE_DATE].toString()),
           );
         },

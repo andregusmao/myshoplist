@@ -20,9 +20,9 @@ class ShoplistRepository extends Disposable implements IShoplistRepository {
           return ShoplistModel(
               id: shoplists[index][SHOPLIST_COLUMN_ID] as int,
               name: shoplists[index][SHOPLIST_COLUMN_NAME] as String,
-              createDate: DateTime.tryParse(
+              createdAt: DateTime.parse(
                   shoplists[index][SHOPLIST_COLUMN_CREATE_DATE].toString()),
-              updateDate: DateTime.tryParse(
+              updatedAt: DateTime.tryParse(
                   shoplists[index][SHOPLIST_COLUMN_UPDATE_DATE].toString()),
               items: []);
         },

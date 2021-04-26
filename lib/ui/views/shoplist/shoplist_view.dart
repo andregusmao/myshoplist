@@ -53,7 +53,7 @@ class _ShoplistViewState
                         items: controller.getItemsCount(
                           list[index].id!,
                         ),
-                        createDate: list[index].createDate!),
+                        createDate: list[index].createdAt),
                     onTap: () => controller
                         .edit(list[index])
                         .whenComplete(() => setState(() {})),
@@ -111,6 +111,7 @@ class _ShoplistViewState
                           .save(
                         ShoplistModel(
                           name: nameController.text,
+                          createdAt: DateTime.now(),
                         ),
                       )
                           .whenComplete(() {

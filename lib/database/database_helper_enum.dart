@@ -8,7 +8,7 @@ class DatabaseHelperEnum {
       case DATABASE.version:
         return 1;
       default:
-        return "";
+        return null;
     }
   }
 }

@@ -9,8 +9,8 @@ const PRODUCT_COLUMN_BRAND = 'brand';
 const PRODUCT_COLUMN_UNIT = 'unit';
 const PRODUCT_COLUMN_WEIGHT = 'weight';
 const PRODUCT_COLUMN_IMAGE = 'image';
-const PRODUCT_COLUMN_CREATE_DATE = 'create_date';
-const PRODUCT_COLUMN_UPDATE_DATE = 'update_date';
+const PRODUCT_COLUMN_CREATE_DATE = 'created_at';
+const PRODUCT_COLUMN_UPDATE_DATE = 'updated_at';
 
 const PRODUCT_ICON = FontAwesomeIcons.gifts;
 const PRODUCT_BARCODE_ICON = FontAwesomeIcons.barcode;

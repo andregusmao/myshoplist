@@ -24,11 +24,11 @@ abstract class _ProductsControllerBase with Store {
       await this.productService.getById(id);
 
   @action
-  Future create() async => await Modular.to.pushNamed('/products/create');
+  Future create() async => await Modular.to.pushNamed('/home/products/create');
 
   @action
   Future edit(ProductModel model) async =>
-      await Modular.to.pushNamed('/products/edit', arguments: model);
+      await Modular.to.pushNamed('/home/products/edit', arguments: model);
 
   @action
   Future<int?> save(ProductModel productModel) async => productModel.id == null

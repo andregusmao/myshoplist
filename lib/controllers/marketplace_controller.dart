@@ -26,11 +26,12 @@ abstract class _MarketplaceControllerBase with Store {
       await this.marketplaceService.getById(id);
 
   @action
-  Future create() async => await Modular.to.pushNamed('/marketplaces/create');
+  Future create() async =>
+      await Modular.to.pushNamed('/home/marketplaces/create');
 
   @action
   Future edit(MarketplaceModel model) async => await Modular.to.pushNamed(
-        '/marketplaces/edit',
+        '/home/marketplaces/edit',
         arguments: model,
       );
 

@@ -6,14 +6,14 @@ class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
   @action
-  void navigateToMarketplaces() => Modular.to.pushNamed('/marketplaces');
+  void navigateToMarketplaces() => Modular.to.pushNamed('/home/marketplaces');
 
   @action
-  void navigateToProducts() => Modular.to.pushNamed('/products');
+  void navigateToProducts() => Modular.to.pushNamed('/home/products');
 
   @action
-  void navigateToShoplists() => Modular.to.pushNamed('/shoplists');
+  void navigateToShoplists() => Modular.to.pushNamed('/home/shoplists');
 
   @action
-  void navigateToPurchases() => Modular.to.pushNamed('/purchases');
+  void navigateToPurchases() => Modular.to.pushNamed('/home/purchases');
 }

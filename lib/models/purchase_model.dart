@@ -28,7 +28,7 @@ class PurchaseModel {
     required this.marketplace,
   });
 
-  static PurchaseModel fromMap(Map<String, dynamic> data) {
+  static PurchaseModel readData(Map<String, dynamic> data) {
     return PurchaseModel(
       id: data[PURCHASE_COLUMN_ID],
       shoplistId: data[PURCHASE_COLUMN_SHOPLIST_ID],
@@ -43,15 +43,15 @@ class PurchaseModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    final map = Map<String, dynamic>();
+  Map<String, dynamic> writeData() {
+    final data = Map<String, dynamic>();
 
-    map[PURCHASE_COLUMN_ID] = this.id;
-    map[PURCHASE_COLUMN_SHOPLIST_ID] = this.shoplistId;
-    map[PURCHASE_COLUMN_MARKETPLACE_ID] = this.marketplaceId;
-    map[PURCHASE_COLUMN_START_DATE] = this.startDate;
-    map[PURCHASE_COLUMN_FINISH_DATE] = this.finishDate;
+    data[PURCHASE_COLUMN_ID] = this.id;
+    data[PURCHASE_COLUMN_SHOPLIST_ID] = this.shoplistId;
+    data[PURCHASE_COLUMN_MARKETPLACE_ID] = this.marketplaceId;
+    data[PURCHASE_COLUMN_START_DATE] = this.startDate;
+    data[PURCHASE_COLUMN_FINISH_DATE] = this.finishDate;
 
-    return map;
+    return data;
   }
 }

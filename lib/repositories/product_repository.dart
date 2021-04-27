@@ -22,8 +22,9 @@ class ProductRepository extends Disposable implements IProductRepository {
             barcode: products[index][PRODUCT_COLUMN_BARCODE] as String,
             description: products[index][PRODUCT_COLUMN_DESCRIPTION] as String,
             brand: products[index][PRODUCT_COLUMN_BRAND] as String?,
+            packing: products[index][PRODUCT_COLUMN_PACKING] as String,
+            weight: products[index][PRODUCT_COLUMN_WEIGHT] as double,
             unit: products[index][PRODUCT_COLUMN_UNIT] as String,
-            weight: products[index][PRODUCT_COLUMN_WEIGHT] as double?,
             createdAt: DateTime.parse(
                 products[index][PRODUCT_COLUMN_CREATE_DATE].toString()),
             updatedAt: DateTime.tryParse(
@@ -50,8 +51,9 @@ class ProductRepository extends Disposable implements IProductRepository {
           PRODUCT_COLUMN_BARCODE,
           PRODUCT_COLUMN_DESCRIPTION,
           PRODUCT_COLUMN_BRAND,
-          PRODUCT_COLUMN_UNIT,
+          PRODUCT_COLUMN_PACKING,
           PRODUCT_COLUMN_WEIGHT,
+          PRODUCT_COLUMN_UNIT,
           PRODUCT_COLUMN_CREATE_DATE,
           PRODUCT_COLUMN_UPDATE_DATE,
         ],
@@ -59,7 +61,7 @@ class ProductRepository extends Disposable implements IProductRepository {
         whereArgs: [id],
       );
       if (product.isNotEmpty) {
-        return ProductModel.fromMap(product.first);
+        return ProductModel.readData(product.first);
       }
     } catch (error) {
       print(error);
@@ -87,7 +89,7 @@ class ProductRepository extends Disposable implements IProductRepository {
     final Database db = await _database();
 
     try {
-      return await db.insert(PRODUCT_TABLE, productModel.toMap());
+      return await db.insert(PRODUCT_TABLE, productModel.writeData());
     } catch (error) {
       print(error);
     }
@@ -102,7 +104,7 @@ class ProductRepository extends Disposable implements IProductRepository {
     try {
       return await db.update(
         PRODUCT_TABLE,
-        productModel.toMap(),
+        productModel.writeData(),
         where: '$PRODUCT_COLUMN_ID = ?',
         whereArgs: [productModel.id],
       );

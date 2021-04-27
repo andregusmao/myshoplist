@@ -27,9 +27,13 @@ class _ShoplistEditViewState
   _ShoplistEditViewState(this.shoplistModel);
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     this.nameController.text = this.shoplistModel.name;
+    super.initState();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -122,11 +126,14 @@ class _ShoplistEditViewState
               onTap: () {
                 if (_editForm.currentState!.validate()) {
                   controller
-                      .save(ShoplistModel(
-                        id: this.shoplistModel.id,
-                        name: this.nameController.text,
-                        createdAt: this.shoplistModel.createdAt,
-                      ))
+                      .save(
+                        ShoplistModel(
+                          id: this.shoplistModel.id,
+                          name: this.nameController.text,
+                          createdAt: this.shoplistModel.createdAt,
+                          updatedAt: DateTime.now(),
+                        ),
+                      )
                       .whenComplete(() => Modular.to.pop(context));
                 }
               },

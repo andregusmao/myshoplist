@@ -27,18 +27,18 @@ class ShoplistModel {
   }
 
   Map<String, dynamic> writeData() {
-    final map = Map<String, dynamic>();
+    final data = Map<String, dynamic>();
 
-    map[SHOPLIST_COLUMN_ID] = this.id;
-    map[SHOPLIST_COLUMN_NAME] = this.name;
+    data[SHOPLIST_COLUMN_ID] = this.id;
+    data[SHOPLIST_COLUMN_NAME] = this.name;
     if (this.id == null) {
-      map[SHOPLIST_COLUMN_CREATE_DATE] =
+      data[SHOPLIST_COLUMN_CREATE_DATE] =
           DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
     } else {
-      map[SHOPLIST_COLUMN_UPDATE_DATE] =
+      data[SHOPLIST_COLUMN_UPDATE_DATE] =
           DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
     }
 
-    return map;
+    return data;
   }
 }

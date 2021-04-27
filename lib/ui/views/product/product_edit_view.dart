@@ -8,27 +8,45 @@ import 'package:myshoplist/models/product_model.dart';
 import 'package:myshoplist/ui/components/app/app_bar_icon_component.dart';
 import 'package:myshoplist/ui/components/app/floating_button_component.dart';
 
-class ProductCreateView extends StatefulWidget {
+class ProductEditView extends StatefulWidget {
+  final ProductModel productModel;
+
+  const ProductEditView({Key? key, required this.productModel})
+      : super(key: key);
   @override
-  _ProductCreateViewState createState() => _ProductCreateViewState();
+  _ProductEditViewState createState() =>
+      _ProductEditViewState(this.productModel);
 }
 
-class _ProductCreateViewState
-    extends ModularState<ProductCreateView, ProductController> {
-  final GlobalKey<FormState> _insertForm = GlobalKey<FormState>();
+class _ProductEditViewState
+    extends ModularState<ProductEditView, ProductController> {
+  final ProductModel productModel;
+  final GlobalKey<FormState> _editForm = GlobalKey<FormState>();
   final TextEditingController barcodeController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController brandController = TextEditingController();
   final TextEditingController packingController = TextEditingController();
   final TextEditingController weightController = TextEditingController();
-  final TextEditingController unitController = TextEditingController();
-  String? unit;
+  String unit = '';
   List<String> unities = [
     "Quilos",
     "Gramas",
     "Unidades",
     "Caixas",
   ];
+
+  _ProductEditViewState(this.productModel);
+
+  @override
+  void initState() {
+    this.barcodeController.text = this.productModel.barcode;
+    this.descriptionController.text = this.productModel.description;
+    this.brandController.text = this.productModel.brand ?? '';
+    this.packingController.text = this.productModel.packing;
+    this.weightController.text = this.productModel.weight.toString();
+    this.unit = this.productModel.unit;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +62,7 @@ class _ProductCreateViewState
             AppBarIconComponent(icon: PRODUCT_ICON),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('Novo produto'),
+              child: Text('Editar produto'),
             ),
           ],
         ),
@@ -52,7 +70,7 @@ class _ProductCreateViewState
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(bottom: 96),
         child: Form(
-          key: _insertForm,
+          key: this._editForm,
           child: Column(
             children: [
               Padding(
@@ -129,6 +147,7 @@ class _ProductCreateViewState
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: Padding(
@@ -187,27 +206,71 @@ class _ProductCreateViewState
           ),
         ),
       ),
-      floatingActionButton: FloatingButtonComponent(
-        icon: FontAwesomeIcons.solidSave,
-        key: UniqueKey(),
-        onTap: () {
-          print('Validate: ${_insertForm.currentState!.validate()}');
-          if (_insertForm.currentState!.validate()) {
-            controller
-                .save(
-                  ProductModel(
-                    barcode: this.barcodeController.text,
-                    description: this.descriptionController.text,
-                    brand: this.brandController.text,
-                    packing: this.packingController.text,
-                    weight: double.tryParse(this.weightController.text) ?? 0,
-                    unit: this.unit ?? '',
-                    createdAt: DateTime.now(),
-                  ),
-                )
-                .whenComplete(() => Modular.to.pop(context));
-          }
-        },
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: FloatingButtonComponent(
+              icon: FontAwesomeIcons.trash,
+              key: UniqueKey(),
+              onTap: () => showDialog(
+                context: context,
+                builder: (BuildContext dialogContext) {
+                  return AlertDialog(
+                    title: Text('Excluir produto'),
+                    content:
+                        Text('Tem certeza que deseja excluir esse produto?'),
+                    actions: [
+                      TextButton(
+                        child: Text('Não'),
+                        onPressed: () => Navigator.of(dialogContext).pop(),
+                      ),
+                      TextButton(
+                        child: Text('Sim'),
+                        onPressed: () {
+                          controller
+                              .delete(this.productModel.id!)
+                              .whenComplete(() {
+                            Navigator.of(dialogContext).pop();
+                            Modular.to.pop(context);
+                          });
+                        },
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: FloatingButtonComponent(
+              icon: FontAwesomeIcons.solidSave,
+              key: UniqueKey(),
+              onTap: () {
+                if (this._editForm.currentState!.validate()) {
+                  controller
+                      .save(
+                        ProductModel(
+                          id: this.productModel.id,
+                          barcode: this.barcodeController.text,
+                          description: this.descriptionController.text,
+                          brand: this.brandController.text,
+                          packing: this.packingController.text,
+                          weight:
+                              double.tryParse(this.weightController.text) ?? 0,
+                          unit: this.unit,
+                          createdAt: this.productModel.createdAt,
+                          updatedAt: DateTime.now(),
+                        ),
+                      )
+                      .whenComplete(() => Modular.to.pop(context));
+                }
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

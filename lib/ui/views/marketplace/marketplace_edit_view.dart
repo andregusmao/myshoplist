@@ -28,10 +28,14 @@ class _MarketplaceEditViewState
   _MarketplaceEditViewState(this.marketplaceModel);
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     this.nameController.text = this.marketplaceModel.name;
     this.addressController.text = this.marketplaceModel.address ?? '';
+    super.initState();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -130,6 +134,7 @@ class _MarketplaceEditViewState
                       name: this.nameController.text,
                       address: this.addressController.text,
                       createdAt: this.marketplaceModel.createdAt,
+                      updatedAt: DateTime.now(),
                     ),
                   );
                   Modular.to.pop(context);

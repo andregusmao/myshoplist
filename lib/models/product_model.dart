@@ -8,8 +8,9 @@ class ProductModel {
   final String barcode;
   final String description;
   final String? brand;
+  final String packing;
+  final double weight;
   final String unit;
-  final double? weight;
   final ByteBuffer? image;
   final DateTime createdAt;
   final DateTime? updatedAt;
@@ -19,45 +20,48 @@ class ProductModel {
     required this.barcode,
     required this.description,
     this.brand,
+    required this.packing,
+    required this.weight,
     required this.unit,
-    this.weight,
     this.image,
     required this.createdAt,
     this.updatedAt,
   });
 
-  static ProductModel fromMap(Map<String, dynamic> data) {
+  static ProductModel readData(Map<String, dynamic> data) {
     return ProductModel(
       id: data[PRODUCT_COLUMN_ID],
       barcode: data[PRODUCT_COLUMN_BARCODE],
       description: data[PRODUCT_COLUMN_DESCRIPTION],
       brand: data[PRODUCT_COLUMN_BRAND],
-      unit: data[PRODUCT_COLUMN_UNIT],
+      packing: data[PRODUCT_COLUMN_PACKING],
       weight: data[PRODUCT_COLUMN_WEIGHT],
+      unit: data[PRODUCT_COLUMN_UNIT],
       image: data[PRODUCT_COLUMN_IMAGE],
       createdAt: data[PRODUCT_COLUMN_CREATE_DATE],
       updatedAt: data[PRODUCT_COLUMN_UPDATE_DATE],
     );
   }
 
-  Map<String, dynamic> toMap() {
-    final map = Map<String, dynamic>();
+  Map<String, dynamic> writeData() {
+    final data = Map<String, dynamic>();
 
-    map[PRODUCT_COLUMN_ID] = this.id;
-    map[PRODUCT_COLUMN_BARCODE] = this.barcode;
-    map[PRODUCT_COLUMN_DESCRIPTION] = this.description;
-    map[PRODUCT_COLUMN_BRAND] = this.brand;
-    map[PRODUCT_COLUMN_UNIT] = this.unit;
-    map[PRODUCT_COLUMN_WEIGHT] = this.weight;
-    map[PRODUCT_COLUMN_IMAGE] = this.image;
+    data[PRODUCT_COLUMN_ID] = this.id;
+    data[PRODUCT_COLUMN_BARCODE] = this.barcode;
+    data[PRODUCT_COLUMN_DESCRIPTION] = this.description;
+    data[PRODUCT_COLUMN_BRAND] = this.brand;
+    data[PRODUCT_COLUMN_PACKING] = this.packing;
+    data[PRODUCT_COLUMN_WEIGHT] = this.weight;
+    data[PRODUCT_COLUMN_UNIT] = this.unit;
+    data[PRODUCT_COLUMN_IMAGE] = this.image;
     if (this.id == null) {
-      map[PRODUCT_COLUMN_CREATE_DATE] =
+      data[PRODUCT_COLUMN_CREATE_DATE] =
           DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
     } else {
-      map[PRODUCT_COLUMN_UPDATE_DATE] =
+      data[PRODUCT_COLUMN_UPDATE_DATE] =
           DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
     }
 
-    return map;
+    return data;
   }
 }

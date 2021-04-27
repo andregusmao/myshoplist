@@ -61,7 +61,7 @@ class _ProductViewState extends ModularState<ProductView, ProductController> {
       ),
       floatingActionButton: FloatingButtonComponent(
         icon: FontAwesomeIcons.plus,
-        onTap: () => controller.create(),
+        onTap: () => controller.create().whenComplete(() => setState(() {})),
       ),
     );
   }

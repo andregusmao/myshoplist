@@ -35,7 +35,7 @@ abstract class _ShoplistControllerBase with Store {
 
   @action
   Future edit(ShoplistModel model) async =>
-      await Modular.to.pushNamed('/shoplists/edit', arguments: model);
+      await Modular.to.pushNamed('/home/shoplists/edit', arguments: model);
 
   @action
   Future<int?> save(ShoplistModel shoplistModel) async =>

@@ -64,7 +64,7 @@ class PurchaseRepository extends Disposable implements IPurchaseRepository {
       );
       if (purchase.isNotEmpty) {
         purchase.first['item'] = await PurchaseItemRepository().getAll(id);
-        return PurchaseModel.fromMap(purchase.first);
+        return PurchaseModel.readData(purchase.first);
       }
     } catch (error) {
       print(error);
@@ -92,7 +92,7 @@ class PurchaseRepository extends Disposable implements IPurchaseRepository {
     final Database db = await _database();
 
     try {
-      return await db.insert(PURCHASE_TABLE, purchaseModel.toMap());
+      return await db.insert(PURCHASE_TABLE, purchaseModel.writeData());
     } catch (error) {
       print(error);
     }
@@ -107,7 +107,7 @@ class PurchaseRepository extends Disposable implements IPurchaseRepository {
     try {
       return await db.update(
         PURCHASE_TABLE,
-        purchaseModel.toMap(),
+        purchaseModel.writeData(),
         where: '$PURCHASE_COLUMN_ID = ?',
         whereArgs: [purchaseModel.id],
       );

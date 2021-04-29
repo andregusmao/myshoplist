@@ -24,6 +24,7 @@ class _ProductCreateViewState
   final MoneyMaskedTextController weightController =
       MoneyMaskedTextController(precision: 3);
   final TextEditingController unitController = TextEditingController();
+
   String? unit;
   List<String> unities = [
     "Quilos",
@@ -74,9 +75,7 @@ class _ProductCreateViewState
                       icon: Icon(
                         PRODUCT_BARCODE_ICON,
                       ),
-                      onPressed: () {
-                        // Open barcode scanner
-                      },
+                      onPressed: () {},
                     ),
                   ),
                   keyboardType: TextInputType.number,

@@ -230,6 +230,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.0"
+  flutter_masked_text2:
+    dependency: "direct main"
+    description:
+      name: flutter_masked_text2
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.1"
   flutter_mobx:
     dependency: "direct main"
     description:

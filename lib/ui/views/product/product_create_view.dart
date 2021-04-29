@@ -1,5 +1,6 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myshoplist/constants/product_constants.dart';
@@ -20,7 +21,8 @@ class _ProductCreateViewState
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController brandController = TextEditingController();
   final TextEditingController packingController = TextEditingController();
-  final TextEditingController weightController = TextEditingController();
+  final MoneyMaskedTextController weightController =
+      MoneyMaskedTextController(precision: 3);
   final TextEditingController unitController = TextEditingController();
   String? unit;
   List<String> unities = [
